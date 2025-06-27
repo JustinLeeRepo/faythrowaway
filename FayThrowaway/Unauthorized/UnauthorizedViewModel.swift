@@ -24,14 +24,16 @@ class UnauthorizedViewModel: ObservableObject {
     }
     
     func expressSignIn() async {
-        withAnimation {
-            isLoading = true
+        Task { @MainActor in
+            withAnimation {
+                isLoading = true
+            }
         }
         
         do {
             try await authService.expressSignIn()
             
-            await MainActor.run {
+            Task {@MainActor in
                 withAnimation {
                     self.isLoading = false
                 }

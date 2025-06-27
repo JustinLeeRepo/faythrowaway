@@ -16,10 +16,13 @@ class AuthorizedCoordinator: ObservableObject {
     }
     
     let user: User
+    let appointmentsViewModel: AppointmentsViewModel
+    
     private var cancellables = Set<AnyCancellable>()
     
     init(user: User) {
         self.user = user
+        self.appointmentsViewModel = AppointmentsViewModel(user: user)
     }
     
 }

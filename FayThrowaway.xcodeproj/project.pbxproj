@@ -27,6 +27,9 @@
 		36D32C182E0EB719002415D5 /* AppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C172E0EB719002415D5 /* AppointmentsView.swift */; };
 		36D32C1A2E0EB773002415D5 /* AppointmentsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C192E0EB773002415D5 /* AppointmentsHeaderView.swift */; };
 		36D32C1C2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36D32C1B2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf */; };
+		36D32C1F2E0EC185002415D5 /* AppointmentsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C1E2E0EC185002415D5 /* AppointmentsTabView.swift */; };
+		36D32C212E0EC84C002415D5 /* AppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C202E0EC84C002415D5 /* AppointmentService.swift */; };
+		36D32C232E0ECF16002415D5 /* AppointmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C222E0ECF16002415D5 /* AppointmentListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		36D32C192E0EB773002415D5 /* AppointmentsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsHeaderView.swift; sourceTree = "<group>"; };
 		36D32C1B2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		36D32C1D2E0EBA77002415D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		36D32C1E2E0EC185002415D5 /* AppointmentsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTabView.swift; sourceTree = "<group>"; };
+		36D32C202E0EC84C002415D5 /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
+		36D32C222E0ECF16002415D5 /* AppointmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,7 @@
 		36D32BF82E0DE5D0002415D5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				36D32C202E0EC84C002415D5 /* AppointmentService.swift */,
 				36D32BF92E0DE5E4002415D5 /* AuthService.swift */,
 				36D32C0A2E0E50F4002415D5 /* ServiceClient.swift */,
 			);
@@ -168,6 +175,8 @@
 				36D32C152E0EB6FB002415D5 /* AppointmentsViewModel.swift */,
 				36D32C172E0EB719002415D5 /* AppointmentsView.swift */,
 				36D32C192E0EB773002415D5 /* AppointmentsHeaderView.swift */,
+				36D32C1E2E0EC185002415D5 /* AppointmentsTabView.swift */,
+				36D32C222E0ECF16002415D5 /* AppointmentListView.swift */,
 			);
 			path = Appointments;
 			sourceTree = "<group>";
@@ -252,6 +261,7 @@
 				36D32C162E0EB6FB002415D5 /* AppointmentsViewModel.swift in Sources */,
 				36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */,
 				36D32C112E0EAF76002415D5 /* AuthorizedCoordinator.swift in Sources */,
+				36D32C232E0ECF16002415D5 /* AppointmentListView.swift in Sources */,
 				36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */,
 				36D32C092E0E0EF4002415D5 /* SigninView.swift in Sources */,
 				36D32C0B2E0E50F4002415D5 /* ServiceClient.swift in Sources */,
@@ -262,7 +272,9 @@
 				36D32BFA2E0DE5E4002415D5 /* AuthService.swift in Sources */,
 				36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */,
 				36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */,
+				36D32C1F2E0EC185002415D5 /* AppointmentsTabView.swift in Sources */,
 				36D32C1A2E0EB773002415D5 /* AppointmentsHeaderView.swift in Sources */,
+				36D32C212E0EC84C002415D5 /* AppointmentService.swift in Sources */,
 				36D32BF52E0DE548002415D5 /* RootCoordinatorView.swift in Sources */,
 				36D32C182E0EB719002415D5 /* AppointmentsView.swift in Sources */,
 			);

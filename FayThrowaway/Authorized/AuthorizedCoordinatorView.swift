@@ -13,7 +13,7 @@ struct AuthorizedCoordinatorView: View {
     @State var tab: AuthorizedCoordinator.Tab = .first
     var body: some View {
         TabView(selection: $tab) {
-            AppointmentsView()
+            AppointmentsView(viewModel: coordinator.appointmentsViewModel)
                 .tabItem {
                     Label {
                         Text("Appointments")

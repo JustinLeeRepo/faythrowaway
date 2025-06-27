@@ -13,13 +13,13 @@ class RootCoordinator: ObservableObject {
     //TODO: check if token / session is persisted 
     @Published var isAuthorized = false
     @Published var user: User?
+    @Published var authorizedCoordinator: AuthorizedCoordinator?
     
     private var authService = AuthService.shared
     private var currentUser = CurrentUser.shared
     private var cancellables = Set<AnyCancellable>()
     
     let unauthorizedCoordinator: UnauthorizedCoordinator
-    var authorizedCoordinator: AuthorizedCoordinator?
     
     init(isAuthorized: Bool = false) {
         self.isAuthorized = isAuthorized
@@ -35,10 +35,14 @@ class RootCoordinator: ObservableObject {
                 self?.isAuthorized = user != nil
                 
                 if let user = user {
-                    self?.authorizedCoordinator = AuthorizedCoordinator(user: user)
+                    Task { @MainActor in
+                        self?.authorizedCoordinator = AuthorizedCoordinator(user: user)
+                    }
                 }
                 else {
-                    self?.authorizedCoordinator = nil
+                    Task { @MainActor in
+                        self?.authorizedCoordinator = nil
+                    }
                 }
             }
             .store(in: &cancellables)
