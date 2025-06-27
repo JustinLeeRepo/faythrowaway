@@ -12,12 +12,13 @@ struct RootCoordinatorView: View {
     
     var body: some View {
         ZStack {
-            if !coordinator.isAuthorized {
-                UnauthorizedCoordinatorView(coordinator: coordinator.unauthorizedCoordinator)
-                    .opacity(coordinator.isAuthorized ? 0 : 1)
+            if let authorizedCoordinator = coordinator.authorizedCoordinator {
+                AuthorizedCoordinatorView(coordinator: authorizedCoordinator)
+                    .opacity(coordinator.isAuthorized ? 1 : 0)
             }
             else {
-                Text("we in")
+                UnauthorizedCoordinatorView(coordinator: coordinator.unauthorizedCoordinator)
+                    .opacity(coordinator.isAuthorized ? 0 : 1)
             }
         }
     }
