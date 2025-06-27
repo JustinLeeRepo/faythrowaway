@@ -8,17 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */; };
-		36D32BE82E0DE512002415D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BE72E0DE512002415D5 /* ContentView.swift */; };
 		36D32BEA2E0DE513002415D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BE92E0DE513002415D5 /* Assets.xcassets */; };
 		36D32BED2E0DE513002415D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */; };
+		36D32BF52E0DE548002415D5 /* RootCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */; };
+		36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF62E0DE572002415D5 /* RootCoordinator.swift */; };
+		36D32BFA2E0DE5E4002415D5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF92E0DE5E4002415D5 /* AuthService.swift */; };
+		36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */; };
+		36D32BFF2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */; };
+		36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */; };
+		36D32C042E0E0BE2002415D5 /* UnauthorizedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C032E0E0BE2002415D5 /* UnauthorizedViewModel.swift */; };
+		36D32C072E0E0EE5002415D5 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C062E0E0EE5002415D5 /* SigninViewModel.swift */; };
+		36D32C092E0E0EF4002415D5 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C082E0E0EF4002415D5 /* SigninView.swift */; };
+		36D32C0B2E0E50F4002415D5 /* ServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C0A2E0E50F4002415D5 /* ServiceClient.swift */; };
+		36D32C0E2E0EA0F7002415D5 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 36D32C0D2E0EA0F7002415D5 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		36D32BE22E0DE512002415D5 /* FayThrowaway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FayThrowaway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FayThrowawayApp.swift; sourceTree = "<group>"; };
-		36D32BE72E0DE512002415D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		36D32BE92E0DE513002415D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatorView.swift; sourceTree = "<group>"; };
+		36D32BF62E0DE572002415D5 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		36D32BF92E0DE5E4002415D5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedCoordinator.swift; sourceTree = "<group>"; };
+		36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedCoordinatorView.swift; sourceTree = "<group>"; };
+		36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedView.swift; sourceTree = "<group>"; };
+		36D32C032E0E0BE2002415D5 /* UnauthorizedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedViewModel.swift; sourceTree = "<group>"; };
+		36D32C062E0E0EE5002415D5 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		36D32C082E0E0EF4002415D5 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
+		36D32C0A2E0E50F4002415D5 /* ServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D32C0E2E0EA0F7002415D5 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +72,11 @@
 			isa = PBXGroup;
 			children = (
 				36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */,
-				36D32BE72E0DE512002415D5 /* ContentView.swift */,
+				36D32BF82E0DE5D0002415D5 /* Service */,
+				36D32BF32E0DE535002415D5 /* Root */,
+				36D32BFB2E0E0B37002415D5 /* UnauthorizedCoordinator */,
+				36D32C002E0E0BC5002415D5 /* Unauthorized */,
+				36D32C052E0E0ED4002415D5 /* Signin */,
 				36D32BE92E0DE513002415D5 /* Assets.xcassets */,
 				36D32BEB2E0DE513002415D5 /* Preview Content */,
 			);
@@ -65,6 +89,51 @@
 				36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		36D32BF32E0DE535002415D5 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				36D32BF62E0DE572002415D5 /* RootCoordinator.swift */,
+				36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		36D32BF82E0DE5D0002415D5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				36D32BF92E0DE5E4002415D5 /* AuthService.swift */,
+				36D32C0A2E0E50F4002415D5 /* ServiceClient.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		36D32BFB2E0E0B37002415D5 /* UnauthorizedCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */,
+				36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */,
+			);
+			path = UnauthorizedCoordinator;
+			sourceTree = "<group>";
+		};
+		36D32C002E0E0BC5002415D5 /* Unauthorized */ = {
+			isa = PBXGroup;
+			children = (
+				36D32C032E0E0BE2002415D5 /* UnauthorizedViewModel.swift */,
+				36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */,
+			);
+			path = Unauthorized;
+			sourceTree = "<group>";
+		};
+		36D32C052E0E0ED4002415D5 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				36D32C062E0E0EE5002415D5 /* SigninViewModel.swift */,
+				36D32C082E0E0EF4002415D5 /* SigninView.swift */,
+			);
+			path = Signin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +152,9 @@
 			dependencies = (
 			);
 			name = FayThrowaway;
+			packageProductDependencies = (
+				36D32C0D2E0EA0F7002415D5 /* Lottie */,
+			);
 			productName = FayThrowaway;
 			productReference = 36D32BE22E0DE512002415D5 /* FayThrowaway.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +183,9 @@
 				Base,
 			);
 			mainGroup = 36D32BD92E0DE512002415D5;
+			packageReferences = (
+				36D32C0C2E0EA0F7002415D5 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			productRefGroup = 36D32BE32E0DE512002415D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +212,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36D32BE82E0DE512002415D5 /* ContentView.swift in Sources */,
+				36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */,
+				36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */,
+				36D32C092E0E0EF4002415D5 /* SigninView.swift in Sources */,
+				36D32C0B2E0E50F4002415D5 /* ServiceClient.swift in Sources */,
+				36D32C072E0E0EE5002415D5 /* SigninViewModel.swift in Sources */,
+				36D32C042E0E0BE2002415D5 /* UnauthorizedViewModel.swift in Sources */,
+				36D32BFF2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift in Sources */,
+				36D32BFA2E0DE5E4002415D5 /* AuthService.swift in Sources */,
 				36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */,
+				36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */,
+				36D32BF52E0DE548002415D5 /* RootCoordinatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +428,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		36D32C0C2E0EA0F7002415D5 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		36D32C0D2E0EA0F7002415D5 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36D32C0C2E0EA0F7002415D5 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 36D32BDA2E0DE512002415D5 /* Project object */;
 }

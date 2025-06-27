@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct FayThrowawayApp: App {
+    @StateObject var coordinator: RootCoordinator = .init()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootCoordinatorView(coordinator: coordinator)
         }
     }
 }
