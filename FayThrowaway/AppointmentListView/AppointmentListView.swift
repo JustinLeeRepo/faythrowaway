@@ -169,9 +169,10 @@ struct AppointmentListView: View {
     
     let user = User(token: "")
     
-    let eventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
+    let appointmentTabEventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
+    let eventPublisher = PassthroughSubject<GreatSuccessEvent, Never>()
     
-    let viewModel = AppointmentListViewModel(user: user, eventPublisher: eventPublisher)
+    let viewModel = AppointmentListViewModel(user: user, appointmentTabEventPublisher: appointmentTabEventPublisher, eventPublisher: eventPublisher)
     viewModel.appointments = appointments
     
     return AppointmentListView(viewModel: viewModel)

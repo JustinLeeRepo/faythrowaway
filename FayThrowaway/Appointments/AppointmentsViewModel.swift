@@ -11,20 +11,58 @@ enum AppointmentTabEvent {
     case selectedTab(AppointmentTab)
 }
 
+enum GreatSuccessEvent {
+    case greatSuccess
+    case veryNice
+}
+
 class AppointmentsViewModel: ObservableObject {
+    @Published var greatSuccess: Bool = false
+    @Published var veryNice: Bool = false
     let user: User
     
+    let appointmentsHeaderViewModel: AppointmentsHeaderViewModel
     let appointmentListViewModel: AppointmentListViewModel
     let appointmentsTabViewModel: AppointmentsTabViewModel
+    private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
     private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
+    private var cancellables = Set<AnyCancellable>()
     
     init(user: User) {
         self.user = user
+        
+        let greatSuccessEventPub = PassthroughSubject<GreatSuccessEvent, Never>()
+        self.greatSuccessEventPub = greatSuccessEventPub
+        
         let appointmentTabEventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
         self.appointmentTabEventPublisher = appointmentTabEventPublisher
         
-        self.appointmentListViewModel = AppointmentListViewModel(user: user, eventPublisher: appointmentTabEventPublisher)
+        self.appointmentsHeaderViewModel = AppointmentsHeaderViewModel(greatSuccessEventPub: greatSuccessEventPub)
+        self.appointmentListViewModel = AppointmentListViewModel(user: user, appointmentTabEventPublisher: appointmentTabEventPublisher, eventPublisher: greatSuccessEventPub)
         self.appointmentsTabViewModel = AppointmentsTabViewModel(eventPublisher: appointmentTabEventPublisher)
         
+        setupListener()
+    }
+    
+    private func setupListener() {
+        greatSuccessEventPub
+            .sink { [weak self] event in
+                self?.handleNavigationEvent(event)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func handleNavigationEvent(_ event: GreatSuccessEvent) {
+        switch event {
+        case .greatSuccess:
+            Task { @MainActor in
+                self.greatSuccess = true
+            }
+            break
+            
+        case .veryNice:
+            self.veryNice = true
+            break
+        }
     }
 }

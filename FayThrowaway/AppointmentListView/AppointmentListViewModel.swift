@@ -18,6 +18,7 @@ class AppointmentListViewModel: ObservableObject {
     let monthAbbreviator: DateFormatter
     
     
+    private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
     private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     private let appointmentService: AppointmentService = .shared
@@ -37,7 +38,9 @@ class AppointmentListViewModel: ObservableObject {
         selectedTab == .upcoming ? upcomingAppointments : pastAppointments
     }
     
-    init(user: User, eventPublisher: PassthroughSubject<AppointmentTabEvent, Never>) {
+    init(user: User,
+         appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>,
+         eventPublisher: PassthroughSubject<GreatSuccessEvent, Never>) {
         self.user = user
         
         let timeFormatter = DateFormatter()
@@ -48,7 +51,8 @@ class AppointmentListViewModel: ObservableObject {
         monthAbbreviator.dateFormat = "MMM"
         self.monthAbbreviator = monthAbbreviator
         
-        self.appointmentTabEventPublisher = eventPublisher
+        self.appointmentTabEventPublisher = appointmentTabEventPublisher
+        self.greatSuccessEventPub = eventPublisher
         setupListener()
         
         Task {
@@ -60,7 +64,8 @@ class AppointmentListViewModel: ObservableObject {
         AppointmentCardViewModel(appointment: appointment,
                                  timeFormatter: timeFormatter,
                                  monthAbbreviator: monthAbbreviator,
-                                 isNextUpcoming: isFirst && selectedTab == .upcoming)
+                                 isNextUpcoming: isFirst && selectedTab == .upcoming,
+                                 greatSuccessEventPub: greatSuccessEventPub)
     }
     
     func fetchAppointments() async {

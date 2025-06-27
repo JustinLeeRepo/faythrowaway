@@ -5,9 +5,12 @@
 //  Created by Justin Lee on 6/27/25.
 //
 
+import Combine
+import Lottie
 import SwiftUI
 
 struct AppointmentsHeaderView: View {
+    @ObservedObject var viewModel: AppointmentsHeaderViewModel
     var body: some View {
         HStack {
             Text("Appointments")
@@ -18,7 +21,7 @@ struct AppointmentsHeaderView: View {
             Spacer()
             
             Button {
-                //TODO:
+                viewModel.veryNice()
             } label: {
                 Label {
                     Text("New")
@@ -40,5 +43,7 @@ struct AppointmentsHeaderView: View {
 }
 
 #Preview {
-    AppointmentsHeaderView()
+    let eventPub = PassthroughSubject<GreatSuccessEvent, Never>()
+    let viewModel = AppointmentsHeaderViewModel(greatSuccessEventPub: eventPub)
+    return AppointmentsHeaderView(viewModel: viewModel)
 }

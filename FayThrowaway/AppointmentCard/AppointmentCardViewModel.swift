@@ -5,6 +5,7 @@
 //  Created by Justin Lee on 6/27/25.
 //
 
+import Combine
 import Foundation
 
 class AppointmentCardViewModel: ObservableObject {
@@ -13,14 +14,18 @@ class AppointmentCardViewModel: ObservableObject {
     let monthAbbreviator: DateFormatter
     let isNextUpcoming: Bool
     
+    private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
+    
     init(appointment: Appointment,
          timeFormatter: DateFormatter,
          monthAbbreviator: DateFormatter,
-         isNextUpcoming: Bool = false) {
+         isNextUpcoming: Bool = false,
+         greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>) {
         self.appointment = appointment
         self.timeFormatter = timeFormatter
         self.monthAbbreviator = monthAbbreviator
         self.isNextUpcoming = isNextUpcoming
+        self.greatSuccessEventPub = greatSuccessEventPub
     }
     
     var startDate: Date? {
@@ -63,5 +68,9 @@ class AppointmentCardViewModel: ObservableObject {
     
     var typeTitle: String {
         isNextUpcoming ? "\(appointment.appointmentType.rawValue) with \(appointment.providerName), \(appointment.providerType)" : appointment.appointmentType.rawValue
+    }
+    
+    func greatSuccess() {
+        self.greatSuccessEventPub.send(.greatSuccess)
     }
 }

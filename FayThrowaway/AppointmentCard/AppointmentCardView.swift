@@ -5,6 +5,7 @@
 //  Created by Justin Lee on 6/27/25.
 //
 
+import Combine
 import SwiftUI
 
 struct AppointmentCardView: View {
@@ -55,7 +56,7 @@ struct AppointmentCardView: View {
             if viewModel.isNextUpcoming {
                 
                 Button {
-                    // TDOO:
+                    viewModel.greatSuccess()
                 } label: {
                     Label {
                         Text("Join appointment")
@@ -108,6 +109,8 @@ struct AppointmentCardView: View {
     let monthAbbreviator = DateFormatter()
     monthAbbreviator.dateFormat = "MMM"
     
-    let viewModel = AppointmentCardViewModel(appointment: appointment, timeFormatter: timeFormatter, monthAbbreviator: monthAbbreviator)
+    let eventPub = PassthroughSubject<GreatSuccessEvent, Never>()
+    
+    let viewModel = AppointmentCardViewModel(appointment: appointment, timeFormatter: timeFormatter, monthAbbreviator: monthAbbreviator, greatSuccessEventPub: eventPub)
     return AppointmentCardView(viewModel: viewModel)
 }
