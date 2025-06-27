@@ -24,5 +24,4 @@ class AuthorizedCoordinator: ObservableObject {
         self.user = user
         self.appointmentsViewModel = AppointmentsViewModel(user: user)
     }
-    
 }

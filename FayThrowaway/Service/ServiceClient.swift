@@ -66,10 +66,14 @@ struct Appointment: Codable, Identifiable {
     var id: String {
         appointmentId
     }
+                            
+    var providerName: String {
+        "Jane Williams"
+    }
     
-    var isFirstUpcoming: Bool = false
-    
-//    var appointmentTypeTitle: String {
+    var providerType: String {
+        "RD"
+    }
     
     let appointmentId: String
     let patientId: String
@@ -91,14 +95,6 @@ struct Appointment: Codable, Identifiable {
         case end
         case durationInMinutes = "duration_in_minutes"
         case recurrenceType = "recurrence_type"
-    }
-    
-    var startDate: Date? {
-        return ISO8601DateFormatter().date(from: start)
-    }
-    
-    var endDate: Date? {
-        return ISO8601DateFormatter().date(from: end)
     }
     
     var isUpcoming: Bool {

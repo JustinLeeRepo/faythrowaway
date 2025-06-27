@@ -5,117 +5,52 @@
 //  Created by Justin Lee on 6/27/25.
 //
 
+import Combine
+import Lottie
 import SwiftUI
 
 struct AppointmentListView: View {
-    let appointments: [Appointment]
+    @ObservedObject var viewModel: AppointmentListViewModel
     
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 12) {
-                ForEach(appointments) { appointment in
-                    AppointmentCardView(appointment: appointment)
+                ForEach(Array(viewModel.currentAppointments.enumerated()), id: \.element.id) { (index, appointment) in
+                    let appointmentCardViewModel = viewModel.appointmentCardViewModel(appointment: appointment, isFirst: index == 0)
+                    AppointmentCardView(viewModel: appointmentCardViewModel)
                 }
             }
             .padding(.horizontal)
         }
-    }
-}
-
-struct AppointmentCardView: View {
-    let appointment: Appointment
-    
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        return formatter
-    }
-    
-    private var timeFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
-    }
-    
-    var body: some View {
-        VStack {
-            HStack(spacing: 16) {
-                VStack(spacing: 2) {
-                    if let startDate = appointment.startDate {
-                        
-                        Text(DateFormatter.monthAbbreviation.string(from: startDate).uppercased())
-                            .font(.custom("Manrope-SemiBold", size: 12))
-                            .kerning(1)
-                            .lineSpacing(6)
-                            .multilineTextAlignment(.center)
-                            .textCase(.uppercase)
-                            .foregroundColor(.accent)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(appointment.isUpcoming ? .accent.opacity(0.11) : .gray.opacity(0.09))
-                        
-                        Text("\(Calendar.current.component(.day, from: startDate))")
-                            .font(.custom("Manrope-SemiBold", size: 18))
-                            .lineSpacing(9)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.primary)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(appointment.isUpcoming ? .gray.opacity(0.05) : .gray.opacity(0.05))
-                    }
-                }
-                .frame(width: 48, height: 48)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    if let startDate = appointment.startDate,
-                       let endDate = appointment.endDate {
-                        Text("\(timeFormatter.string(from: startDate)) - \(timeFormatter.string(from: endDate)) (PT)")
-                            .font(.custom("Manrope-Bold", size: 14))
-                            .lineSpacing(7)
-                            .foregroundColor(.primary)
-                    }
-                    Text(appointment.appointmentType.rawValue)
-                        .font(.custom("Manrope-Medium", size: 12))
-                        .lineSpacing(6)
-                        .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-            }
-            
-            if appointment.isFirstUpcoming {
-                
-                Button {
-                    // TDOO:
-                } label: {
-                    Label {
-                        Text("Join appointment")
-                            .font(.custom("Manrope-Bold", size: 14))
-                            .lineSpacing(7)
-                    } icon: {
-                        Image(.videoCamera)
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
+        .refreshable {
+            Task {
+                await viewModel.fetchAppointments()
             }
         }
-        .padding()
         .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color(.label).opacity(0.1), lineWidth: appointment.isFirstUpcoming ? 0.1 : 1)
-                .shadow(color: Color(.label).opacity(appointment.isFirstUpcoming ? 1.0 : 0.0), radius: 2.0, x: 0, y: 0)
+            if let error = viewModel.error {
+                VStack {
+                    LottieView(animation: .named("Error"))
+                        .playbackMode(.playing(.fromProgress(0, toProgress: 1, loopMode: .playOnce)))
+                        .animationDidFinish { completed in
+                            withAnimation {
+                                viewModel.error = nil
+                            }
+                        }
+                        .frame(width: 100, height: 100)
+                        .padding()
+                    
+                    Text(error.localizedDescription)
+                        .padding(.bottom)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
+                        .font(.callout)
+                }
+                .background(.background)
+                .clipShape(.rect(cornerRadius: 12.0))
+            }
         }
-//        .background(Color(.systemBackground))
-//        .cornerRadius(12)
     }
-}
-
-// Helper extension for month abbreviation
-extension DateFormatter {
-    static let monthAbbreviation: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM"
-        return formatter
-    }()
 }
 
 #Preview {
@@ -232,5 +167,12 @@ extension DateFormatter {
         )
     ]
     
-    return AppointmentListView(appointments: appointments)
+    let user = User(token: "")
+    
+    let eventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
+    
+    let viewModel = AppointmentListViewModel(user: user, eventPublisher: eventPublisher)
+    viewModel.appointments = appointments
+    
+    return AppointmentListView(viewModel: viewModel)
 }

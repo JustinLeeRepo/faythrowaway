@@ -13,8 +13,8 @@ struct AppointmentsView: View {
     var body: some View {
         VStack {
             AppointmentsHeaderView()
-            AppointmentsTabView(viewModel: viewModel)
-            AppointmentListView(appointments: viewModel.currentAppointments)
+            AppointmentsTabView(viewModel: viewModel.appointmentsTabViewModel)
+            AppointmentListView(viewModel: viewModel.appointmentListViewModel)
                 .padding(.vertical)
         }
     }

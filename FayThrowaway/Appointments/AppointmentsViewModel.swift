@@ -5,47 +5,26 @@
 //  Created by Justin Lee on 6/27/25.
 //
 
-import Foundation
+import Combine
+
+enum AppointmentTabEvent {
+    case selectedTab(AppointmentTab)
+}
 
 class AppointmentsViewModel: ObservableObject {
-    @Published var appointments = [Appointment]()
-    @Published var error: Error?
-    @Published var selectedTab = 0
-    
     let user: User
     
-    private let appointmentService: AppointmentService = .shared
+    let appointmentListViewModel: AppointmentListViewModel
+    let appointmentsTabViewModel: AppointmentsTabViewModel
+    private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
     
     init(user: User) {
         self.user = user
+        let appointmentTabEventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
+        self.appointmentTabEventPublisher = appointmentTabEventPublisher
         
-        Task {
-            await fetchAppointments()
-        }
-    }
-    
-    var upcomingAppointments: [Appointment] {
-        appointments
-            .filter { $0.isUpcoming }    }
-    
-    var pastAppointments: [Appointment] {
-        appointments
-            .filter { $0.isPast }
-    }
-    
-    var currentAppointments: [Appointment] {
-        selectedTab == 0 ? upcomingAppointments : pastAppointments
-    }
-    
-    func fetchAppointments() async {
-        do {
-            let appointments = try await appointmentService.fetchAppointments(token: user.token)
-            Task { @MainActor in
-                self.appointments = appointments
-            }
-        }
-        catch {
-            self.error = error
-        }
+        self.appointmentListViewModel = AppointmentListViewModel(user: user, eventPublisher: appointmentTabEventPublisher)
+        self.appointmentsTabViewModel = AppointmentsTabViewModel(eventPublisher: appointmentTabEventPublisher)
+        
     }
 }

@@ -93,8 +93,4 @@ class SignInViewModel: ObservableObject {
             passwordText = ""
         }
     }
-    
-    private func setError(_ error: Error) {
-        self.error = error
-    }
 }
