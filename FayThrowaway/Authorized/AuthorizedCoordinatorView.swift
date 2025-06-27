@@ -13,31 +13,66 @@ struct AuthorizedCoordinatorView: View {
     @State var tab: AuthorizedCoordinator.Tab = .first
     var body: some View {
         TabView(selection: $tab) {
-            Text("YO")
+            AppointmentsView()
                 .tabItem {
-                    Label("Appointments", image: tab == .first ? .calendarFill : .calendar)
+                    Label {
+                        Text("Appointments")
+                            .tabLabelStyle()
+                    } icon: {
+                        tab == .first ? Image(.calendarFill) : Image(.calendar)
+                    }
                 }
                 .tag(Tab.first)
             
             Text("2")
                 .tabItem {
-                    Label("Chat", image: .chats)
+                    Label {
+                        Text("Chat")
+                            .tabLabelStyle()
+                    } icon: {
+                        Image(.chats)
+                    }
                 }
                 .tag(Tab.second)
             
             Text("3")
                 .tabItem {
-                    Label("Journal", image: .notebook)
+                    Label {
+                        Text("Journal")
+                            .tabLabelStyle()
+                    } icon: {
+                        Image(.notebook)
+                    }
                 }
                 .tag(Tab.third)
             
             Text("4")
                 .tabItem {
-                    Label("Profile", image: .user)
+                    Label {
+                        Text("Profile")
+                            .tabLabelStyle()
+                    } icon: {
+                        Image(.user)
+                    }
                 }
                 .tag(Tab.fourth)
             
         }
+    }
+}
+
+struct TabLabelStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("Manrope-SemiBold", size: 10))
+            .lineSpacing(2)
+            .multilineTextAlignment(.center)
+    }
+}
+
+extension View {
+    func tabLabelStyle() -> some View {
+        self.modifier(TabLabelStyle())
     }
 }
 
