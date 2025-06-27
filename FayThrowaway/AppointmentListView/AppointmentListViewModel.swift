@@ -15,6 +15,7 @@ class AppointmentListViewModel: ObservableObject {
     
     let user: User
     let timeFormatter: DateFormatter
+    let timezoneFormatter: DateFormatter
     let monthAbbreviator: DateFormatter
     
     
@@ -44,8 +45,14 @@ class AppointmentListViewModel: ObservableObject {
         self.user = user
         
         let timeFormatter = DateFormatter()
+        timeFormatter.timeZone = .current
         timeFormatter.dateFormat = "h:mm a"
         self.timeFormatter = timeFormatter
+        
+        let timezoneFormatter = DateFormatter()
+        timezoneFormatter.timeZone = .current
+        timezoneFormatter.dateFormat = "zzz"
+        self.timezoneFormatter = timezoneFormatter
         
         let monthAbbreviator = DateFormatter()
         monthAbbreviator.dateFormat = "MMM"
@@ -63,6 +70,7 @@ class AppointmentListViewModel: ObservableObject {
     func appointmentCardViewModel(appointment: Appointment, isFirst: Bool) -> AppointmentCardViewModel {
         AppointmentCardViewModel(appointment: appointment,
                                  timeFormatter: timeFormatter,
+                                 timezoneFormatter: timezoneFormatter,
                                  monthAbbreviator: monthAbbreviator,
                                  isNextUpcoming: isFirst && selectedTab == .upcoming,
                                  greatSuccessEventPub: greatSuccessEventPub)

@@ -104,13 +104,18 @@ struct AppointmentCardView: View {
     )
     
     let timeFormatter = DateFormatter()
+    timeFormatter.timeZone = .current
     timeFormatter.dateFormat = "h:mm a"
+    
+    let timezoneFormatter = DateFormatter()
+    timezoneFormatter.timeZone = .current
+    timezoneFormatter.dateFormat = "zzz"
     
     let monthAbbreviator = DateFormatter()
     monthAbbreviator.dateFormat = "MMM"
     
     let eventPub = PassthroughSubject<GreatSuccessEvent, Never>()
     
-    let viewModel = AppointmentCardViewModel(appointment: appointment, timeFormatter: timeFormatter, monthAbbreviator: monthAbbreviator, greatSuccessEventPub: eventPub)
+    let viewModel = AppointmentCardViewModel(appointment: appointment, timeFormatter: timeFormatter, timezoneFormatter: timezoneFormatter, monthAbbreviator: monthAbbreviator, greatSuccessEventPub: eventPub)
     return AppointmentCardView(viewModel: viewModel)
 }

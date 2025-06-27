@@ -11,6 +11,7 @@ import Foundation
 class AppointmentCardViewModel: ObservableObject {
     let appointment: Appointment
     let timeFormatter: DateFormatter
+    let timezoneFormatter: DateFormatter
     let monthAbbreviator: DateFormatter
     let isNextUpcoming: Bool
     
@@ -18,11 +19,13 @@ class AppointmentCardViewModel: ObservableObject {
     
     init(appointment: Appointment,
          timeFormatter: DateFormatter,
+         timezoneFormatter: DateFormatter,
          monthAbbreviator: DateFormatter,
          isNextUpcoming: Bool = false,
          greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>) {
         self.appointment = appointment
         self.timeFormatter = timeFormatter
+        self.timezoneFormatter = timezoneFormatter
         self.monthAbbreviator = monthAbbreviator
         self.isNextUpcoming = isNextUpcoming
         self.greatSuccessEventPub = greatSuccessEventPub
@@ -56,7 +59,7 @@ class AppointmentCardViewModel: ObservableObject {
         if isNextUpcoming,
            let startDate = startDate,
            let endDate = endDate {
-            return "\(timeFormatter.string(from: startDate)) - \(timeFormatter.string(from: endDate)) (PT)"
+            return "\(timeFormatter.string(from: startDate)) - \(timeFormatter.string(from: endDate)) \(timezoneFormatter.string(from: endDate))"
         }
         
         if let startDate = startDate {
