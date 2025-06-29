@@ -12,25 +12,20 @@ struct AppointmentsTabView: View {
     @ObservedObject var viewModel: AppointmentsTabViewModel
     var body: some View {
         HStack(spacing: 0) {
-            tabButton(tab: .upcoming) {
-                Task { @MainActor in
-                    viewModel.selectedTab = .upcoming
-                    viewModel.switchTab()
-                }
-            }
+            tabButton(tab: .upcoming)
             
-            tabButton(tab: .past) {
-                Task { @MainActor in
-                    viewModel.selectedTab = .past
-                    viewModel.switchTab()
-                }
-            }
+            tabButton(tab: .past)
         }
         .padding(.top)
     }
     
-    func tabButton(tab: AppointmentTab, action: @escaping () -> Void = {} ) -> some View {
-        Button(action: action) {
+    func tabButton(tab: AppointmentTab) -> some View {
+        Button {
+            Task { @MainActor in
+                viewModel.selectedTab = tab
+                viewModel.switchTab()
+            }
+        } label: {
             VStack(spacing: 4) {
                 Text(tab.rawValue)
                     .font(.custom("Manrope-Bold", size: 14))

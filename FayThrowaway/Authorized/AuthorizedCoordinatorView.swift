@@ -10,16 +10,16 @@ import SwiftUI
 struct AuthorizedCoordinatorView: View {
     typealias Tab = AuthorizedCoordinator.Tab
     @ObservedObject var coordinator: AuthorizedCoordinator
-    @State var tab: AuthorizedCoordinator.Tab = .first
+    
     var body: some View {
-        TabView(selection: $tab) {
+        TabView(selection: $coordinator.tab) {
             AppointmentsView(viewModel: coordinator.appointmentsViewModel)
                 .tabItem {
                     Label {
                         Text("Appointments")
                             .tabLabelStyle()
                     } icon: {
-                        tab == .first ? Image(.calendarFill) : Image(.calendar)
+                        coordinator.tab == .first ? Image(.calendarFill) : Image(.calendar)
                     }
                 }
                 .tag(Tab.first)

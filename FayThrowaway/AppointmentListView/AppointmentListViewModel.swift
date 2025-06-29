@@ -72,7 +72,7 @@ class AppointmentListViewModel: ObservableObject {
                                  timeFormatter: timeFormatter,
                                  timezoneFormatter: timezoneFormatter,
                                  monthAbbreviator: monthAbbreviator,
-                                 isNextUpcoming: isFirst && selectedTab == .upcoming,
+                                 isNextUpcoming: isFirst && appointment.isUpcoming,
                                  greatSuccessEventPub: greatSuccessEventPub)
     }
     

@@ -10,7 +10,7 @@ import Lottie
 import SwiftUI
 
 struct AppointmentsHeaderView: View {
-    @ObservedObject var viewModel: AppointmentsHeaderViewModel
+    let viewModel: AppointmentsHeaderViewModel
     var body: some View {
         HStack {
             Text("Appointments")

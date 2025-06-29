@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class AppointmentCardViewModel: ObservableObject {
+class AppointmentCardViewModel {
     let appointment: Appointment
     let timeFormatter: DateFormatter
     let timezoneFormatter: DateFormatter
@@ -70,7 +70,9 @@ class AppointmentCardViewModel: ObservableObject {
     }
     
     var typeTitle: String {
-        isNextUpcoming ? "\(appointment.appointmentType.rawValue) with \(appointment.providerName), \(appointment.providerType)" : appointment.appointmentType.rawValue
+        isNextUpcoming ?
+        "\(appointment.appointmentType.rawValue) with \(appointment.providerName), \(appointment.providerType)" :
+        appointment.appointmentType.rawValue
     }
     
     func greatSuccess() {

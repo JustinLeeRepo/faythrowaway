@@ -7,7 +7,7 @@
 
 import Combine
 
-class AppointmentsHeaderViewModel: ObservableObject {
+class AppointmentsHeaderViewModel {
     private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
     
     init(greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>) {

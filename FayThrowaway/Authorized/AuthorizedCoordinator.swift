@@ -15,6 +15,8 @@ class AuthorizedCoordinator: ObservableObject {
         case fourth
     }
     
+    @Published var tab: Tab = .first
+    
     let user: User
     let appointmentsViewModel: AppointmentsViewModel
     

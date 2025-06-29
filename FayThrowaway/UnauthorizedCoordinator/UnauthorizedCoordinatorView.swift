@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UnauthorizedCoordinatorView: View {
-    @ObservedObject var coordinator = UnauthorizedCoordinator()
+    @ObservedObject var coordinator: UnauthorizedCoordinator
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             UnauthorizedView(viewModel: coordinator.unauthorizedViewModel)
@@ -21,5 +21,6 @@ struct UnauthorizedCoordinatorView: View {
 }
 
 #Preview {
-    UnauthorizedCoordinatorView()
+    let coordinator = UnauthorizedCoordinator()
+    return UnauthorizedCoordinatorView(coordinator: coordinator)
 }
