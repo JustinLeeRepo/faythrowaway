@@ -7,8 +7,8 @@ https://github.com/user-attachments/assets/c4cc8f17-2cc8-48ac-9ad1-441d025902ea
 # Implementation Notes / Decisions
 Tried to keep components separated and as small as possible
 
-TODO: consolidate network client code to become easily built upon via generics, protocols, and unified service errors (instead of seeing which service produced the error via type of error produced, include the service information within the error enum parameters)
-TODO: move service specified / thrift interface defined models to models group within service group (keep out of app layer groups), or within their associatd service class, or create a new group for the associated service class and include the service class and associated models in flat directory or had models group within the new specified service group
+TODO: add protocol that abstracts path, method, body, token 
+
 
 # Login & Auth
 4-5 hours (coming back from dropping dog off at vet and running errands, then eating dinner, getting a little distracted around midnight with live streams)

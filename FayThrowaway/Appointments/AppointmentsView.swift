@@ -46,7 +46,6 @@ struct AppointmentsView: View {
 }
 
 #Preview {
-    let user = User(token: "")
-    let viewModel = AppointmentsViewModel(user: user)
+    let viewModel = AppointmentsViewModel()
     return AppointmentsView(viewModel: viewModel)
 }

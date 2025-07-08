@@ -77,7 +77,6 @@ extension View {
 }
 
 #Preview {
-    let user = User(token: "")
-    let coordinator = AuthorizedCoordinator(user: user)
+    let coordinator = AuthorizedCoordinator()
     return AuthorizedCoordinatorView(coordinator: coordinator)
 }

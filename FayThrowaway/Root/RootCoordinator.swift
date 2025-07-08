@@ -8,11 +8,9 @@
 import Combine
 import SwiftUI
 
-@MainActor
 class RootCoordinator: ObservableObject {
     //TODO: check if token / session is persisted 
     @Published var isAuthorized = false
-    @Published var user: User?
     @Published var authorizedCoordinator: AuthorizedCoordinator?
     
     private var authService = AuthService.shared
@@ -31,17 +29,17 @@ class RootCoordinator: ObservableObject {
     private func setupListener() {
         currentUser.$user
             .sink { [weak self] user in
-                self?.user = user
-                self?.isAuthorized = user != nil
+                guard let self = self else { return }
+                self.isAuthorized = user != nil
                 
                 if let user = user {
                     Task { @MainActor in
-                        self?.authorizedCoordinator = AuthorizedCoordinator(user: user)
+                        self.authorizedCoordinator = AuthorizedCoordinator()
                     }
                 }
                 else {
                     Task { @MainActor in
-                        self?.authorizedCoordinator = nil
+                        self.authorizedCoordinator = nil
                     }
                 }
             }

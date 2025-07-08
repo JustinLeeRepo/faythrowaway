@@ -13,7 +13,6 @@ class AppointmentListViewModel: ObservableObject {
     @Published var selectedTab: AppointmentTab = .upcoming
     @Published var error: Error?
     
-    let user: User
     let timeFormatter: DateFormatter
     let timezoneFormatter: DateFormatter
     let monthAbbreviator: DateFormatter
@@ -39,10 +38,8 @@ class AppointmentListViewModel: ObservableObject {
         selectedTab == .upcoming ? upcomingAppointments : pastAppointments
     }
     
-    init(user: User,
-         appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>,
+    init(appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>,
          eventPublisher: PassthroughSubject<GreatSuccessEvent, Never>) {
-        self.user = user
         
         let timeFormatter = DateFormatter()
         timeFormatter.timeZone = .current
@@ -62,6 +59,7 @@ class AppointmentListViewModel: ObservableObject {
         self.greatSuccessEventPub = eventPublisher
         setupListener()
         
+        //move to task modifier in view?
         Task {
             await fetchAppointments()
         }
@@ -78,7 +76,7 @@ class AppointmentListViewModel: ObservableObject {
     
     func fetchAppointments() async {
         do {
-            let appointments = try await appointmentService.fetchAppointments(token: user.token)
+            let appointments = try await appointmentService.fetchAppointments()
             Task { @MainActor in
                 self.appointments = appointments
             }

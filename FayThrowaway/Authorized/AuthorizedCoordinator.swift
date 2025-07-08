@@ -17,13 +17,11 @@ class AuthorizedCoordinator: ObservableObject {
     
     @Published var tab: Tab = .first
     
-    let user: User
     let appointmentsViewModel: AppointmentsViewModel
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(user: User) {
-        self.user = user
-        self.appointmentsViewModel = AppointmentsViewModel(user: user)
+    init() {
+        self.appointmentsViewModel = AppointmentsViewModel()
     }
 }

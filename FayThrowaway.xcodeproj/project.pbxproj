@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		362C94F12E1C9BF30003056F /* AppointmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C94F02E1C9BF30003056F /* AppointmentModel.swift */; };
+		362C94F42E1C9C2D0003056F /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C94F32E1C9C2D0003056F /* AuthModel.swift */; };
 		36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */; };
 		36D32BEA2E0DE513002415D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BE92E0DE513002415D5 /* Assets.xcassets */; };
 		36D32BED2E0DE513002415D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		362C94F02E1C9BF30003056F /* AppointmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentModel.swift; sourceTree = "<group>"; };
+		362C94F32E1C9C2D0003056F /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		36D32BE22E0DE512002415D5 /* FayThrowaway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FayThrowaway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FayThrowawayApp.swift; sourceTree = "<group>"; };
 		36D32BE92E0DE513002415D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +85,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		362C94EF2E1C9BDE0003056F /* Appointment */ = {
+			isa = PBXGroup;
+			children = (
+				36D32C202E0EC84C002415D5 /* AppointmentService.swift */,
+				362C94F02E1C9BF30003056F /* AppointmentModel.swift */,
+			);
+			path = Appointment;
+			sourceTree = "<group>";
+		};
+		362C94F22E1C9C210003056F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				36D32BF92E0DE5E4002415D5 /* AuthService.swift */,
+				362C94F32E1C9C2D0003056F /* AuthModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		36D32BD92E0DE512002415D5 = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +162,8 @@
 		36D32BF82E0DE5D0002415D5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				36D32C202E0EC84C002415D5 /* AppointmentService.swift */,
-				36D32BF92E0DE5E4002415D5 /* AuthService.swift */,
+				362C94EF2E1C9BDE0003056F /* Appointment */,
+				362C94F22E1C9C210003056F /* Auth */,
 				36D32C0A2E0E50F4002415D5 /* ServiceClient.swift */,
 			);
 			path = Service;
@@ -308,6 +330,7 @@
 				36D32C162E0EB6FB002415D5 /* AppointmentsViewModel.swift in Sources */,
 				36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */,
 				36D32C112E0EAF76002415D5 /* AuthorizedCoordinator.swift in Sources */,
+				362C94F42E1C9C2D0003056F /* AuthModel.swift in Sources */,
 				36D32C232E0ECF16002415D5 /* AppointmentListView.swift in Sources */,
 				36D32C2B2E0F34CF002415D5 /* AppointmentListViewModel.swift in Sources */,
 				36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */,
@@ -324,6 +347,7 @@
 				36D32C252E0F3429002415D5 /* AppointmentCardView.swift in Sources */,
 				36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */,
 				36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */,
+				362C94F12E1C9BF30003056F /* AppointmentModel.swift in Sources */,
 				36D32C1F2E0EC185002415D5 /* AppointmentsTabView.swift in Sources */,
 				36D32C1A2E0EB773002415D5 /* AppointmentsHeaderView.swift in Sources */,
 				36D32C212E0EC84C002415D5 /* AppointmentService.swift in Sources */,

@@ -19,7 +19,6 @@ enum GreatSuccessEvent {
 class AppointmentsViewModel: ObservableObject {
     @Published var greatSuccess: Bool = false
     @Published var veryNice: Bool = false
-    let user: User
     
     let appointmentsHeaderViewModel: AppointmentsHeaderViewModel
     let appointmentListViewModel: AppointmentListViewModel
@@ -28,8 +27,7 @@ class AppointmentsViewModel: ObservableObject {
     private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     
-    init(user: User) {
-        self.user = user
+    init() {
         
         let greatSuccessEventPub = PassthroughSubject<GreatSuccessEvent, Never>()
         self.greatSuccessEventPub = greatSuccessEventPub
@@ -38,7 +36,7 @@ class AppointmentsViewModel: ObservableObject {
         self.appointmentTabEventPublisher = appointmentTabEventPublisher
         
         self.appointmentsHeaderViewModel = AppointmentsHeaderViewModel(greatSuccessEventPub: greatSuccessEventPub)
-        self.appointmentListViewModel = AppointmentListViewModel(user: user, appointmentTabEventPublisher: appointmentTabEventPublisher, eventPublisher: greatSuccessEventPub)
+        self.appointmentListViewModel = AppointmentListViewModel(appointmentTabEventPublisher: appointmentTabEventPublisher, eventPublisher: greatSuccessEventPub)
         self.appointmentsTabViewModel = AppointmentsTabViewModel(eventPublisher: appointmentTabEventPublisher)
         
         setupListener()

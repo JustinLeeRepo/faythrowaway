@@ -11,7 +11,6 @@ struct User {
     var token: String
 }
 
-@MainActor
 final class CurrentUser: ObservableObject {
     static let shared = CurrentUser()
     
@@ -31,13 +30,20 @@ final class CurrentUser: ObservableObject {
 
 class AuthService {
     static let shared = AuthService()
-    
     private let serviceClient: ServiceClient = .init()
     private let userState: CurrentUser = .shared
     
+    private let signInEndpoint = "signin"
+    private let signOutEndpoint = "signout"
+    
     func signIn(username: String, password: String) async throws {
-        let response = try await serviceClient.signIn(username: username, password: password)
-        // TODO: persist token ideally with TTL
+        let request = SignInRequest(username: username, password: password)
+        let response: SignInResponse = try await serviceClient.performRequest(
+            endpoint: signInEndpoint,
+            method: .POST,
+            body: request
+        )
+        
         let user = User(token: response.token)
         
         Task { @MainActor in
@@ -50,7 +56,12 @@ class AuthService {
     }
     
     func signOut() async throws {
-        try await serviceClient.signOut()
+        guard let user = userState.user else { return }
+        try await serviceClient.performRequest(
+            endpoint: signOutEndpoint,
+            method: .POST,
+            authToken: user.token
+        )
         
         Task { @MainActor in
             userState.clearUser()
