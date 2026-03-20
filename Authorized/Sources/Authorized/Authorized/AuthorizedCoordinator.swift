@@ -8,7 +8,7 @@
 import Combine
 import DependencyContainer
 
-class AuthorizedCoordinator: ObservableObject {
+public class AuthorizedCoordinator: ObservableObject {
     enum Tab: UInt {
         case first
         case second
@@ -19,7 +19,7 @@ class AuthorizedCoordinator: ObservableObject {
     
     let appointmentsViewModel: AppointmentsViewModel
     
-    init(dependencyContainer: DependencyContainable) {
+    public init(dependencyContainer: DependencyContainable) {
         self.appointmentsViewModel = AppointmentsViewModel(dependencyContainer: dependencyContainer)
     }
 }

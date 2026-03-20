@@ -29,10 +29,10 @@ struct AppointmentsTabView: View {
             VStack(spacing: 4) {
                 Text(tab.rawValue)
                     .font(.custom("Manrope-Bold", size: 14))
-                    .foregroundColor(viewModel.selectedTab == tab ? .accent : .gray)
+                    .foregroundColor(viewModel.selectedTab == tab ? Color("AccentColor", bundle: .main) : .gray)
                 
                 Rectangle()
-                    .fill(viewModel.selectedTab == tab ? .accent : .gray)
+                    .fill(viewModel.selectedTab == tab ? Color("AccentColor", bundle: .main) : .gray)
                     .frame(height: viewModel.selectedTab == tab ? 2 : 1)
             }
         }

@@ -19,9 +19,9 @@ struct AppointmentCardView: View {
                     Text(viewModel.monthAbbreviation)
                         .font(.custom("Manrope-SemiBold", size: 12))
                         .multilineTextAlignment(.center)
-                        .foregroundColor(.accent)
+                        .foregroundColor(Color("AccentColor", bundle: .main))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(.accent.opacity(0.1))
+                        .background(Color("AccentColor", bundle: .main).opacity(0.1))
                         
                     Text("\(viewModel.dateDay)")
                         .font(.custom("Manrope-SemiBold", size: 18))
@@ -53,7 +53,7 @@ struct AppointmentCardView: View {
                         Text("Join appointment")
                             .font(.custom("Manrope-Bold", size: 14))
                     } icon: {
-                        Image(.videoCamera)
+                        Image("VideoCamera", bundle: .main)
                     }
                     .frame(maxWidth: .infinity)
                 }

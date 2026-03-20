@@ -26,7 +26,7 @@ struct AppointmentsHeaderView: View {
                     Text("New")
                         .font(.custom("Manrope-Bold", size: 14))
                 } icon: {
-                    Image(.plus)
+                    Image("Plus", bundle: .main)
                 }
                 .padding()
                 .overlay {

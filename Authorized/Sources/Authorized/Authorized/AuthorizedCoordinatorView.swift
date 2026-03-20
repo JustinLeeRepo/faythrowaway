@@ -8,11 +8,15 @@
 import DependencyContainer
 import SwiftUI
 
-struct AuthorizedCoordinatorView: View {
+public struct AuthorizedCoordinatorView: View {
     typealias Tab = AuthorizedCoordinator.Tab
     @ObservedObject var coordinator: AuthorizedCoordinator
     
-    var body: some View {
+    public init(coordinator: AuthorizedCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    public var body: some View {
         TabView(selection: $coordinator.tab) {
             AppointmentsView(viewModel: coordinator.appointmentsViewModel)
                 .tabItem {
@@ -20,7 +24,7 @@ struct AuthorizedCoordinatorView: View {
                         Text("Appointments")
                             .tabLabelStyle()
                     } icon: {
-                        coordinator.tab == .first ? Image(.calendarFill) : Image(.calendar)
+                        coordinator.tab == .first ? Image("Calendar.Fill", bundle: .main) : Image("Calendar", bundle: .main)
                     }
                 }
                 .tag(Tab.first)
@@ -31,7 +35,7 @@ struct AuthorizedCoordinatorView: View {
                         Text("Chat")
                             .tabLabelStyle()
                     } icon: {
-                        Image(.chats)
+                        Image("Chats", bundle: .main)
                     }
                 }
                 .tag(Tab.second)
@@ -42,7 +46,7 @@ struct AuthorizedCoordinatorView: View {
                         Text("Journal")
                             .tabLabelStyle()
                     } icon: {
-                        Image(.notebook)
+                        Image("Notebook", bundle: .main)
                     }
                 }
                 .tag(Tab.third)
@@ -53,7 +57,7 @@ struct AuthorizedCoordinatorView: View {
                         Text("Profile")
                             .tabLabelStyle()
                     } icon: {
-                        Image(.user)
+                        Image("User", bundle: .main)
                     }
                 }
                 .tag(Tab.fourth)
@@ -66,7 +70,6 @@ struct TabLabelStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Manrope-SemiBold", size: 10))
-            .lineSpacing(2)
             .multilineTextAlignment(.center)
     }
 }
