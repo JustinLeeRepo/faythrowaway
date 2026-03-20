@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Services
 import SwiftUI
 
 struct AppointmentCardView: View {
@@ -88,17 +89,7 @@ struct AppointmentCardView: View {
 }
 
 #Preview {
-    let appointment = Appointment(
-        appointmentId: "mzdqmf1786",
-        patientId: "1",
-        providerId: "100",
-        status: .scheduled,
-        appointmentType: .followUp,
-        start: Date(),
-        end: Date(),
-        durationInMinutes: 45,
-        recurrenceType: .weekly
-    )
+    let appointment = MockAppointmentService().placeholderAppointments[0]
     
     let timeFormatter = DateFormatter()
     timeFormatter.timeZone = .current

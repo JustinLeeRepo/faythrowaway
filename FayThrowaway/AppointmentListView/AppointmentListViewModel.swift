@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import Services
 import SwiftUI
 
 class AppointmentListViewModel: ObservableObject {

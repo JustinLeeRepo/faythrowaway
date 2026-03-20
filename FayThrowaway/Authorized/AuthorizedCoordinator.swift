@@ -17,10 +17,8 @@ class AuthorizedCoordinator: ObservableObject {
     @Published var tab: Tab = .first
     
     let appointmentsViewModel: AppointmentsViewModel
-    private let authService: AuthServicable
     
     init(dependencyContainer: DependencyContainable) {
         self.appointmentsViewModel = AppointmentsViewModel(dependencyContainer: dependencyContainer)
-        self.authService = dependencyContainer.getAuthService()
     }
 }

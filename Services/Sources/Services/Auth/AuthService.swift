@@ -102,18 +102,19 @@ public class AuthService: AuthServicable {
     }
 }
 
-class MockAuthService: AuthServicable {
-    func signIn(username: String, password: String) async throws {
+public class MockAuthService: AuthServicable {
+    public init() {}
+    public func signIn(username: String, password: String) async throws {
         Task {
             print("mock sign in")
         }
     }
     
-    func expressSignIn() async throws {
+    public func expressSignIn() async throws {
         try await signIn(username: "", password: "")
     }
     
-    func signOut() async throws {
+    public func signOut() async throws {
         Task {
             print("mock sign out")
         }

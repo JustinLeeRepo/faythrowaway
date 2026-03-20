@@ -12,7 +12,7 @@ enum AppointmentStatus: String, Codable {
     case occurred = "Occurred"
 }
 
-enum AppointmentType: String, Codable {
+public enum AppointmentType: String, Codable {
     case followUp = "Follow-up"
     case initialConsultation = "Initial consultation"
 }
@@ -32,11 +32,11 @@ public struct Appointment: Codable, Identifiable {
         appointmentId
     }
                             
-    var providerName: String {
+    public var providerName: String {
         "Jane Williams"
     }
     
-    var providerType: String {
+    public var providerType: String {
         "RD"
     }
     
@@ -44,9 +44,9 @@ public struct Appointment: Codable, Identifiable {
     let patientId: String
     let providerId: String
     let status: AppointmentStatus
-    let appointmentType: AppointmentType
-    let start: Date
-    let end: Date
+    public let appointmentType: AppointmentType
+    public let start: Date
+    public let end: Date
     let durationInMinutes: Int
     let recurrenceType: RecurrenceType
     
@@ -62,11 +62,11 @@ public struct Appointment: Codable, Identifiable {
         case recurrenceType = "recurrence_type"
     }
     
-    var isUpcoming: Bool {
+    public var isUpcoming: Bool {
         status == .scheduled
     }
     
-    var isPast: Bool {
+    public var isPast: Bool {
         status == .occurred
     }
 }

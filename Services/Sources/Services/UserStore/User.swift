@@ -58,6 +58,8 @@ public class UserStore: ObservableObject, UserStorable {
 public class MockUserStore: ObservableObject, UserStorable {
     @Published public var mockUser: User? = User(token: "Mila")
     
+    public init() {}
+    
     public func getCurrentUser() -> User? {
         return mockUser
     }

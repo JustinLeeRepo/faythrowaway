@@ -10,16 +10,12 @@
 		360B82352F6B3A8E00DAF2AF /* MilaNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82342F6B3A8E00DAF2AF /* MilaNetwork */; };
 		360B82382F6B3BB700DAF2AF /* MilaKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82372F6B3BB700DAF2AF /* MilaKeychain */; };
 		360B823A2F6BDC5300DAF2AF /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B82392F6BDC4F00DAF2AF /* DependencyContainer.swift */; };
-		360B823C2F6D00C400DAF2AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B823B2F6D00C100DAF2AF /* Constants.swift */; };
-		360B823F2F6D01AB00DAF2AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B823E2F6D01AB00DAF2AF /* User.swift */; };
-		362C94F12E1C9BF30003056F /* AppointmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C94F02E1C9BF30003056F /* AppointmentModel.swift */; };
-		362C94F42E1C9C2D0003056F /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C94F32E1C9C2D0003056F /* AuthModel.swift */; };
+		360B82432F6D308100DAF2AF /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82422F6D308100DAF2AF /* Services */; };
 		36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */; };
 		36D32BEA2E0DE513002415D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BE92E0DE513002415D5 /* Assets.xcassets */; };
 		36D32BED2E0DE513002415D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */; };
 		36D32BF52E0DE548002415D5 /* RootCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */; };
 		36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF62E0DE572002415D5 /* RootCoordinator.swift */; };
-		36D32BFA2E0DE5E4002415D5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF92E0DE5E4002415D5 /* AuthService.swift */; };
 		36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */; };
 		36D32BFF2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */; };
 		36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */; };
@@ -34,7 +30,6 @@
 		36D32C1A2E0EB773002415D5 /* AppointmentsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C192E0EB773002415D5 /* AppointmentsHeaderView.swift */; };
 		36D32C1C2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36D32C1B2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf */; };
 		36D32C1F2E0EC185002415D5 /* AppointmentsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C1E2E0EC185002415D5 /* AppointmentsTabView.swift */; };
-		36D32C212E0EC84C002415D5 /* AppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C202E0EC84C002415D5 /* AppointmentService.swift */; };
 		36D32C232E0ECF16002415D5 /* AppointmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C222E0ECF16002415D5 /* AppointmentListView.swift */; };
 		36D32C252E0F3429002415D5 /* AppointmentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C242E0F3428002415D5 /* AppointmentCardView.swift */; };
 		36D32C282E0F346D002415D5 /* AppointmentCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C272E0F346D002415D5 /* AppointmentCardViewModel.swift */; };
@@ -45,17 +40,13 @@
 
 /* Begin PBXFileReference section */
 		360B82392F6BDC4F00DAF2AF /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
-		360B823B2F6D00C100DAF2AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		360B823E2F6D01AB00DAF2AF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		362C94F02E1C9BF30003056F /* AppointmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentModel.swift; sourceTree = "<group>"; };
-		362C94F32E1C9C2D0003056F /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		360B82402F6D2DC400DAF2AF /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
 		36D32BE22E0DE512002415D5 /* FayThrowaway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FayThrowaway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FayThrowawayApp.swift; sourceTree = "<group>"; };
 		36D32BE92E0DE513002415D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatorView.swift; sourceTree = "<group>"; };
 		36D32BF62E0DE572002415D5 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		36D32BF92E0DE5E4002415D5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedCoordinator.swift; sourceTree = "<group>"; };
 		36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedCoordinatorView.swift; sourceTree = "<group>"; };
 		36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedView.swift; sourceTree = "<group>"; };
@@ -70,7 +61,6 @@
 		36D32C1B2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		36D32C1D2E0EBA77002415D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		36D32C1E2E0EC185002415D5 /* AppointmentsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTabView.swift; sourceTree = "<group>"; };
-		36D32C202E0EC84C002415D5 /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
 		36D32C222E0ECF16002415D5 /* AppointmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListView.swift; sourceTree = "<group>"; };
 		36D32C242E0F3428002415D5 /* AppointmentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCardView.swift; sourceTree = "<group>"; };
 		36D32C272E0F346D002415D5 /* AppointmentCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCardViewModel.swift; sourceTree = "<group>"; };
@@ -84,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				360B82432F6D308100DAF2AF /* Services in Frameworks */,
 				360B82352F6B3A8E00DAF2AF /* MilaNetwork in Frameworks */,
 				36D32C0E2E0EA0F7002415D5 /* Lottie in Frameworks */,
 				360B82382F6B3BB700DAF2AF /* MilaKeychain in Frameworks */,
@@ -93,37 +84,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		360B823D2F6D01A100DAF2AF /* UserStore */ = {
+		360B82412F6D308100DAF2AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				360B823E2F6D01AB00DAF2AF /* User.swift */,
 			);
-			path = UserStore;
-			sourceTree = "<group>";
-		};
-		362C94EF2E1C9BDE0003056F /* Appointment */ = {
-			isa = PBXGroup;
-			children = (
-				36D32C202E0EC84C002415D5 /* AppointmentService.swift */,
-				362C94F02E1C9BF30003056F /* AppointmentModel.swift */,
-			);
-			path = Appointment;
-			sourceTree = "<group>";
-		};
-		362C94F22E1C9C210003056F /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				36D32BF92E0DE5E4002415D5 /* AuthService.swift */,
-				362C94F32E1C9C2D0003056F /* AuthModel.swift */,
-			);
-			path = Auth;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		36D32BD92E0DE512002415D5 = {
 			isa = PBXGroup;
 			children = (
+				360B82402F6D2DC400DAF2AF /* Services */,
 				36D32BE42E0DE512002415D5 /* FayThrowaway */,
 				36D32C1B2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf */,
+				360B82412F6D308100DAF2AF /* Frameworks */,
 				36D32BE32E0DE512002415D5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,8 +116,6 @@
 				36D32C1D2E0EBA77002415D5 /* Info.plist */,
 				36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */,
 				360B82392F6BDC4F00DAF2AF /* DependencyContainer.swift */,
-				360B823B2F6D00C100DAF2AF /* Constants.swift */,
-				36D32BF82E0DE5D0002415D5 /* Service */,
 				36D32BF32E0DE535002415D5 /* Root */,
 				36D32BFB2E0E0B37002415D5 /* UnauthorizedCoordinator */,
 				36D32C002E0E0BC5002415D5 /* Unauthorized */,
@@ -175,16 +147,6 @@
 				36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		36D32BF82E0DE5D0002415D5 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				362C94EF2E1C9BDE0003056F /* Appointment */,
-				362C94F22E1C9C210003056F /* Auth */,
-				360B823D2F6D01A100DAF2AF /* UserStore */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		36D32BFB2E0E0B37002415D5 /* UnauthorizedCoordinator */ = {
@@ -288,6 +250,7 @@
 				36D32C0D2E0EA0F7002415D5 /* Lottie */,
 				360B82342F6B3A8E00DAF2AF /* MilaNetwork */,
 				360B82372F6B3BB700DAF2AF /* MilaKeychain */,
+				360B82422F6D308100DAF2AF /* Services */,
 			);
 			productName = FayThrowaway;
 			productReference = 36D32BE22E0DE512002415D5 /* FayThrowaway.app */;
@@ -352,7 +315,6 @@
 				36D32C162E0EB6FB002415D5 /* AppointmentsViewModel.swift in Sources */,
 				36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */,
 				36D32C112E0EAF76002415D5 /* AuthorizedCoordinator.swift in Sources */,
-				362C94F42E1C9C2D0003056F /* AuthModel.swift in Sources */,
 				36D32C232E0ECF16002415D5 /* AppointmentListView.swift in Sources */,
 				36D32C2B2E0F34CF002415D5 /* AppointmentListViewModel.swift in Sources */,
 				36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */,
@@ -365,18 +327,13 @@
 				36D32BFF2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift in Sources */,
 				36D32C2E2E0F3753002415D5 /* AppointmentsTabViewModel.swift in Sources */,
 				360B823A2F6BDC5300DAF2AF /* DependencyContainer.swift in Sources */,
-				36D32BFA2E0DE5E4002415D5 /* AuthService.swift in Sources */,
 				36D32C252E0F3429002415D5 /* AppointmentCardView.swift in Sources */,
 				36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */,
 				36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */,
-				360B823F2F6D01AB00DAF2AF /* User.swift in Sources */,
-				362C94F12E1C9BF30003056F /* AppointmentModel.swift in Sources */,
 				36D32C1F2E0EC185002415D5 /* AppointmentsTabView.swift in Sources */,
 				36D32C1A2E0EB773002415D5 /* AppointmentsHeaderView.swift in Sources */,
-				36D32C212E0EC84C002415D5 /* AppointmentService.swift in Sources */,
 				36D32BF52E0DE548002415D5 /* RootCoordinatorView.swift in Sources */,
 				36D32C182E0EB719002415D5 /* AppointmentsView.swift in Sources */,
-				360B823C2F6D00C400DAF2AF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +579,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 360B82362F6B3BB700DAF2AF /* XCRemoteSwiftPackageReference "MilaKeychain" */;
 			productName = MilaKeychain;
+		};
+		360B82422F6D308100DAF2AF /* Services */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Services;
 		};
 		36D32C0D2E0EA0F7002415D5 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import Services
 
 class AppointmentCardViewModel {
     let appointment: Appointment

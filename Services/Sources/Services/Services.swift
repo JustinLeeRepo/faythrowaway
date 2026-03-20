@@ -1,9 +1,5 @@
-//
-//  Constants.swift
-//  FayThrowaway
-//
-//  Created by Justin Lee on 3/19/26.
-//
+// The Swift Programming Language
+// https://docs.swift.org/swift-book
 
 enum Constants {
     enum API {

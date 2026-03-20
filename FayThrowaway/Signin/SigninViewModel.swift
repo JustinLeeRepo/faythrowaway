@@ -5,6 +5,7 @@
 //  Created by Justin Lee on 6/26/25.
 //
 
+import Services
 import SwiftUI
 
 struct SignInModel: Hashable {

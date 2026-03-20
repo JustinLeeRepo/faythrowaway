@@ -40,20 +40,20 @@ struct AppointmentEndpoint: APIEndpoint {
     }
 }
 
-class AppointmentService: AppointmentServicable {
+public class AppointmentService: AppointmentServicable {
     private let networkService: NetworkServiceProtocol
     private let userStore: UserStorable
 
-    var placeholderAppointments: [Appointment] {
+    public var placeholderAppointments: [Appointment] {
         Array(mockAppointments[0..<3])
     }
     
-    init(networkService: NetworkServiceProtocol, userStore: UserStorable) {
+    public init(networkService: NetworkServiceProtocol, userStore: UserStorable) {
         self.networkService = networkService
         self.userStore = userStore
     }
     
-    func fetchAppointments() async throws -> [Appointment] {
+    public func fetchAppointments() async throws -> [Appointment] {
         guard let user = userStore.getCurrentUser() else { throw ServiceError.unauthorized }
         
         let endpoint = AppointmentEndpoint(token: user.token)
@@ -63,12 +63,13 @@ class AppointmentService: AppointmentServicable {
     }
 }
 
-class MockAppointmentService: AppointmentServicable {
-    var placeholderAppointments: [Appointment] {
+public class MockAppointmentService: AppointmentServicable {
+    public init() {}
+    public var placeholderAppointments: [Appointment] {
         Array(mockAppointments[0..<3])
     }
     
-    func fetchAppointments() async throws -> [Appointment] {
+    public func fetchAppointments() async throws -> [Appointment] {
         try await Task.sleep(nanoseconds: 1_000_000_000)
         
         return mockAppointments
