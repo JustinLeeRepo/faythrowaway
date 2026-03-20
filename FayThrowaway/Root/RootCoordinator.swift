@@ -8,38 +8,53 @@
 import Combine
 import SwiftUI
 
-class RootCoordinator: ObservableObject {
-    //TODO: check if token / session is persisted 
-    @Published var isAuthorized = false
-    @Published var authorizedCoordinator: AuthorizedCoordinator?
+@Observable
+class RootCoordinator {
+    enum State {
+        case authorized(AuthorizedCoordinator)
+        case unauthorized(UnauthorizedCoordinator)
+    }
     
-    private var authService = AuthService.shared
-    private var currentUser = CurrentUser.shared
-    private var cancellables = Set<AnyCancellable>()
-    
-    let unauthorizedCoordinator: UnauthorizedCoordinator
-    
-    init(isAuthorized: Bool = false) {
-        self.isAuthorized = isAuthorized
-        self.unauthorizedCoordinator = UnauthorizedCoordinator()
+    var state: State {
+        if let authorizedCoordinator = authorizedCoordinator {
+            return .authorized(authorizedCoordinator)
+        }
         
+        return .unauthorized(unauthorizedCoordinator)
+    }
+    
+    private var cancellables = Set<AnyCancellable>()
+    private var authorizedCoordinator: AuthorizedCoordinator?
+    private let unauthorizedCoordinator: UnauthorizedCoordinator
+    private let dependencyContainer: DependencyContainable
+    
+    init(dependencyContainer: DependencyContainable) {
+        self.dependencyContainer = dependencyContainer
+        self.unauthorizedCoordinator = UnauthorizedCoordinator(dependencyContainer: dependencyContainer)
         setupListener()
     }
     
+    private var currentUser: UserStorable {
+        return dependencyContainer.getUserStore()
+    }
+    
     private func setupListener() {
-        currentUser.$user
+        //withObservationTracking only gets callback on first change
+        currentUser.getCurrentUserPublisher()
             .sink { [weak self] user in
                 guard let self = self else { return }
-                self.isAuthorized = user != nil
-                
-                if let user = user {
+                if let _ = user {
                     Task { @MainActor in
-                        self.authorizedCoordinator = AuthorizedCoordinator()
+                        withAnimation {
+                            self.authorizedCoordinator = AuthorizedCoordinator(dependencyContainer: self.dependencyContainer)
+                        }
                     }
                 }
                 else {
                     Task { @MainActor in
-                        self.authorizedCoordinator = nil
+                        withAnimation {
+                            self.authorizedCoordinator = nil
+                        }
                     }
                 }
             }

@@ -16,21 +16,19 @@ class UnauthorizedCoordinator: ObservableObject {
     @Published var path = NavigationPath()
     
     let unauthorizedViewModel: UnauthorizedViewModel
+    let signInViewModel: SignInViewModel
     
     private let unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(dependencyContainer: DependencyContainable) {
         let unauthorizedEventPublisher = PassthroughSubject<UnauthorizedEvent, Never>()
         
         self.unauthorizedEventPublisher = unauthorizedEventPublisher
-        self.unauthorizedViewModel = UnauthorizedViewModel(unauthorizedEventPublisher: unauthorizedEventPublisher)
+        self.unauthorizedViewModel = UnauthorizedViewModel(dependencyContainer: dependencyContainer, unauthorizedEventPublisher: unauthorizedEventPublisher)
+        self.signInViewModel = SignInViewModel(dependencyContainer: dependencyContainer)
         
         setupListener()
-    }
-    
-    func createSignInViewModel(model: SignInModel) -> SignInViewModel {
-        return SignInViewModel(model: model)
     }
     
     private func setupListener() {
@@ -44,7 +42,7 @@ class UnauthorizedCoordinator: ObservableObject {
     private func handleNavigationEvent(_ event: UnauthorizedEvent) {
         switch event {
         case .proceedToSignIn:
-            path.append(SignInModel())
+            path.append(self.signInViewModel)
             break
         }
     }

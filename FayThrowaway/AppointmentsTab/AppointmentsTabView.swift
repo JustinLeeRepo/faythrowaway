@@ -29,7 +29,6 @@ struct AppointmentsTabView: View {
             VStack(spacing: 4) {
                 Text(tab.rawValue)
                     .font(.custom("Manrope-Bold", size: 14))
-                    .lineSpacing(7)
                     .foregroundColor(viewModel.selectedTab == tab ? .accent : .gray)
                 
                 Rectangle()

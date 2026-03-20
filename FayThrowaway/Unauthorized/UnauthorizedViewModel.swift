@@ -13,9 +13,13 @@ class UnauthorizedViewModel: ObservableObject {
     @Published var error: Error?
     
     private let unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>
-    private let authService: AuthService = AuthService.shared
+    private let authService: AuthServicable
     
-    init(unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>) {
+    init(
+        dependencyContainer: DependencyContainable,
+        unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>
+    ) {
+        self.authService = dependencyContainer.getAuthService()
         self.unauthorizedEventPublisher = unauthorizedEventPublisher
     }
     
@@ -23,25 +27,32 @@ class UnauthorizedViewModel: ObservableObject {
         unauthorizedEventPublisher.send(.proceedToSignIn)
     }
     
+    @MainActor
     func expressSignIn() async {
-        Task { @MainActor in
-            withAnimation {
-                isLoading = true
-            }
+        withAnimation {
+            isLoading = true
         }
         
         do {
             try await authService.expressSignIn()
             
-            Task {@MainActor in
-                withAnimation {
-                    self.isLoading = false
-                }
+            withAnimation {
+                self.isLoading = false
+                self.error = nil
             }
         }
         catch {
-            Task { @MainActor in
+            withAnimation {
                 self.error = error
+                self.isLoading = false
+                
+                Task {
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    
+                    withAnimation {
+                        self.error = nil
+                    }
+                }
             }
         }
     }

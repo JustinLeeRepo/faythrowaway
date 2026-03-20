@@ -23,9 +23,12 @@ class SignInViewModel: ObservableObject {
     
     @Published var model: SignInModel
     @Published var error: Error?
-    private let authService = AuthService.shared
+    @Published var isLoading: Bool = false
     
-    init(model: SignInModel) {
+    private let authService: AuthServicable
+    
+    init(dependencyContainer: DependencyContainable, model: SignInModel = SignInModel()) {
+        self.authService = dependencyContainer.getAuthService()
         self.model = model
     }
     
@@ -65,19 +68,27 @@ class SignInViewModel: ObservableObject {
         model.buttonTitle
     }
     
+    @MainActor
     func proceed(completion: @escaping () -> Void = {}) async {
+        withAnimation {
+            isLoading = true
+        }
+        
         do {
             try await authService.signIn(username: usernameText, password: passwordText)
             
-            Task { @MainActor in
+            withAnimation {
                 self.error = nil
+                self.isLoading = false
                 //dismiss (completion) only on success
                 completion()
+                self.model = SignInModel()
             }
         }
         catch {
-            Task { @MainActor in
+            withAnimation {
                 self.error = error
+                self.isLoading = false
             }
         }
     }
@@ -94,3 +105,14 @@ class SignInViewModel: ObservableObject {
         }
     }
 }
+
+extension SignInViewModel: Hashable {
+    static func == (lhs: SignInViewModel, rhs: SignInViewModel) -> Bool {
+        lhs.model == rhs.model
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(model)
+    }
+}
+

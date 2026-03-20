@@ -14,14 +14,13 @@ class AuthorizedCoordinator: ObservableObject {
         case third
         case fourth
     }
-    
     @Published var tab: Tab = .first
     
     let appointmentsViewModel: AppointmentsViewModel
+    private let authService: AuthServicable
     
-    private var cancellables = Set<AnyCancellable>()
-    
-    init() {
-        self.appointmentsViewModel = AppointmentsViewModel()
+    init(dependencyContainer: DependencyContainable) {
+        self.appointmentsViewModel = AppointmentsViewModel(dependencyContainer: dependencyContainer)
+        self.authService = dependencyContainer.getAuthService()
     }
 }

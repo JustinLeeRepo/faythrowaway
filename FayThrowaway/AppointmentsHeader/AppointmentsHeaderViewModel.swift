@@ -8,13 +8,13 @@
 import Combine
 
 class AppointmentsHeaderViewModel {
-    private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
+    private let appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>
     
-    init(greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>) {
-        self.greatSuccessEventPub = greatSuccessEventPub
+    init(appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>) {
+        self.appointmentEventPub = appointmentEventPub
     }
     
-    func veryNice() {
-        greatSuccessEventPub.send(.veryNice)
+    func createMeeting() {
+        appointmentEventPub.send(.createMeeting)
     }
 }

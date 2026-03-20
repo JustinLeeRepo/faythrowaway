@@ -24,6 +24,12 @@ struct SignInView: View {
                 }
             } label: {
                 Text(viewModel.buttonTitle)
+                
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .padding(.leading, 2)
+                }
             }
             .inputStyling()
             
@@ -97,5 +103,6 @@ extension View {
 }
 
 #Preview {
-    SignInView(viewModel: SignInViewModel(model: SignInModel()))
+    let viewModel = SignInViewModel(dependencyContainer: MockDependencyContainer())
+    SignInView(viewModel: viewModel)
 }

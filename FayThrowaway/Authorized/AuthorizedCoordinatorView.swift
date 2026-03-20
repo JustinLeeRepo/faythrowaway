@@ -77,6 +77,6 @@ extension View {
 }
 
 #Preview {
-    let coordinator = AuthorizedCoordinator()
-    return AuthorizedCoordinatorView(coordinator: coordinator)
+    let coordinator = AuthorizedCoordinator(dependencyContainer: MockDependencyContainer())
+    AuthorizedCoordinatorView(coordinator: coordinator)
 }

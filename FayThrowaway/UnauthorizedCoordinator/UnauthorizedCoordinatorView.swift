@@ -12,8 +12,7 @@ struct UnauthorizedCoordinatorView: View {
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             UnauthorizedView(viewModel: coordinator.unauthorizedViewModel)
-                .navigationDestination(for: SignInModel.self) { model in
-                    let viewModel = coordinator.createSignInViewModel(model: model)
+                .navigationDestination(for: SignInViewModel.self) { viewModel in
                     SignInView(viewModel: viewModel)
                 }
         }
@@ -21,6 +20,6 @@ struct UnauthorizedCoordinatorView: View {
 }
 
 #Preview {
-    let coordinator = UnauthorizedCoordinator()
-    return UnauthorizedCoordinatorView(coordinator: coordinator)
+    let coordinator = UnauthorizedCoordinator(dependencyContainer: MockDependencyContainer())
+    UnauthorizedCoordinatorView(coordinator: coordinator)
 }

@@ -11,55 +11,57 @@ enum AppointmentTabEvent {
     case selectedTab(AppointmentTab)
 }
 
-enum GreatSuccessEvent {
-    case greatSuccess
-    case veryNice
+enum AppointmentEvent {
+    case joinMeeting
+    case createMeeting
 }
 
 class AppointmentsViewModel: ObservableObject {
-    @Published var greatSuccess: Bool = false
-    @Published var veryNice: Bool = false
+    @Published var joinMeeting: Bool = false
+    @Published var createMeeting: Bool = false
     
     let appointmentsHeaderViewModel: AppointmentsHeaderViewModel
     let appointmentListViewModel: AppointmentListViewModel
     let appointmentsTabViewModel: AppointmentsTabViewModel
-    private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
+    private let appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>
     private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(dependencyContainer: DependencyContainable) {
         
-        let greatSuccessEventPub = PassthroughSubject<GreatSuccessEvent, Never>()
-        self.greatSuccessEventPub = greatSuccessEventPub
+        let appointmentEventPub = PassthroughSubject<AppointmentEvent, Never>()
+        self.appointmentEventPub = appointmentEventPub
         
         let appointmentTabEventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
         self.appointmentTabEventPublisher = appointmentTabEventPublisher
         
-        self.appointmentsHeaderViewModel = AppointmentsHeaderViewModel(greatSuccessEventPub: greatSuccessEventPub)
-        self.appointmentListViewModel = AppointmentListViewModel(appointmentTabEventPublisher: appointmentTabEventPublisher, eventPublisher: greatSuccessEventPub)
+        self.appointmentsHeaderViewModel = AppointmentsHeaderViewModel(appointmentEventPub: appointmentEventPub)
+        self.appointmentListViewModel = AppointmentListViewModel(dependencyContainer: dependencyContainer, appointmentTabEventPublisher: appointmentTabEventPublisher, eventPublisher: appointmentEventPub)
         self.appointmentsTabViewModel = AppointmentsTabViewModel(eventPublisher: appointmentTabEventPublisher)
         
         setupListener()
     }
     
     private func setupListener() {
-        greatSuccessEventPub
+        appointmentEventPub
             .sink { [weak self] event in
                 self?.handleNavigationEvent(event)
             }
             .store(in: &cancellables)
     }
     
-    private func handleNavigationEvent(_ event: GreatSuccessEvent) {
+    private func handleNavigationEvent(_ event: AppointmentEvent) {
         switch event {
-        case .greatSuccess:
+        case .joinMeeting:
             Task { @MainActor in
-                self.greatSuccess = true
+                self.joinMeeting = true
             }
             break
             
-        case .veryNice:
-            self.veryNice = true
+        case .createMeeting:
+            Task { @MainActor in
+                self.createMeeting = true
+            }
             break
         }
     }

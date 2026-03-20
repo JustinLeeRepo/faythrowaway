@@ -7,21 +7,40 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 class AppointmentListViewModel: ObservableObject {
+    enum State {
+        case empty
+        case ready
+    }
+    
+    var state: State {
+        if !appointments.isEmpty || isLoading {
+            return .ready
+        }
+        
+        return .empty
+    }
+    
+    @Published var isLoading = false
     @Published var appointments = [Appointment]()
     @Published var selectedTab: AppointmentTab = .upcoming
     @Published var error: Error?
     
-    let timeFormatter: DateFormatter
-    let timezoneFormatter: DateFormatter
-    let monthAbbreviator: DateFormatter
+    let dateFormatter: DateFormatter
     
-    
-    private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
+    private let appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>
     private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
     private var cancellables = Set<AnyCancellable>()
-    private let appointmentService: AppointmentService = .shared
+    private let appointmentService: AppointmentServicable
+    
+    var currentAppointments: [Appointment] {
+        if isLoading {
+            return appointmentService.placeholderAppointments
+        }
+        return selectedTab == .upcoming ? upcomingAppointments : pastAppointments
+    }
     
     var upcomingAppointments: [Appointment] {
         appointments
@@ -33,30 +52,17 @@ class AppointmentListViewModel: ObservableObject {
             .filter { $0.isPast }
     }
     
-    //TODO: add listener that will switch selectedTab
-    var currentAppointments: [Appointment] {
-        selectedTab == .upcoming ? upcomingAppointments : pastAppointments
-    }
-    
-    init(appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>,
-         eventPublisher: PassthroughSubject<GreatSuccessEvent, Never>) {
+    init(dependencyContainer: DependencyContainable,
+        appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>,
+        eventPublisher: PassthroughSubject<AppointmentEvent, Never>) {
         
-        let timeFormatter = DateFormatter()
-        timeFormatter.timeZone = .current
-        timeFormatter.dateFormat = "h:mm a"
-        self.timeFormatter = timeFormatter
-        
-        let timezoneFormatter = DateFormatter()
-        timezoneFormatter.timeZone = .current
-        timezoneFormatter.dateFormat = "zzz"
-        self.timezoneFormatter = timezoneFormatter
-        
-        let monthAbbreviator = DateFormatter()
-        monthAbbreviator.dateFormat = "MMM"
-        self.monthAbbreviator = monthAbbreviator
+        self.dateFormatter = DateFormatter()
+        self.dateFormatter.timeZone = .current
         
         self.appointmentTabEventPublisher = appointmentTabEventPublisher
-        self.greatSuccessEventPub = eventPublisher
+        self.appointmentEventPub = eventPublisher
+        
+        self.appointmentService = dependencyContainer.getAppointmentService()
         setupListener()
         
         //move to task modifier in view?
@@ -67,23 +73,30 @@ class AppointmentListViewModel: ObservableObject {
     
     func appointmentCardViewModel(appointment: Appointment, isFirst: Bool) -> AppointmentCardViewModel {
         AppointmentCardViewModel(appointment: appointment,
-                                 timeFormatter: timeFormatter,
-                                 timezoneFormatter: timezoneFormatter,
-                                 monthAbbreviator: monthAbbreviator,
+                                 dateFormatter: dateFormatter,
                                  isNextUpcoming: isFirst && appointment.isUpcoming,
-                                 greatSuccessEventPub: greatSuccessEventPub)
+                                 appointmentEventPub: appointmentEventPub)
     }
     
+    @MainActor
     func fetchAppointments() async {
+        withAnimation {
+            self.isLoading = true
+            self.error = nil
+        }
+        
         do {
             let appointments = try await appointmentService.fetchAppointments()
-            Task { @MainActor in
+            withAnimation {
                 self.appointments = appointments
+                self.isLoading = false
+                self.error = nil
             }
         }
         catch {
-            Task { @MainActor in
+            withAnimation {
                 self.error = error
+                self.isLoading = false
             }
         }
     }

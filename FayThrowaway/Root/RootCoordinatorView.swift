@@ -8,23 +8,20 @@
 import SwiftUI
 
 struct RootCoordinatorView: View {
-    @ObservedObject var coordinator: RootCoordinator
+    var coordinator: RootCoordinator
     
     var body: some View {
-        ZStack {
-            if let authorizedCoordinator = coordinator.authorizedCoordinator {
-                AuthorizedCoordinatorView(coordinator: authorizedCoordinator)
-                    .opacity(coordinator.isAuthorized ? 1 : 0)
-            }
-            else {
-                UnauthorizedCoordinatorView(coordinator: coordinator.unauthorizedCoordinator)
-                    .opacity(coordinator.isAuthorized ? 0 : 1)
-            }
+        switch coordinator.state {
+        case .authorized(let authorizedCoordinator):
+            AuthorizedCoordinatorView(coordinator: authorizedCoordinator)
+            
+        case .unauthorized(let unauthorizedCoordinator):
+            UnauthorizedCoordinatorView(coordinator: unauthorizedCoordinator)
         }
     }
 }
 
 #Preview {
-    let coordinator = RootCoordinator()
-    return RootCoordinatorView(coordinator: coordinator)
+    let coordinator = RootCoordinator(dependencyContainer: MockDependencyContainer())
+    RootCoordinatorView(coordinator: coordinator)
 }

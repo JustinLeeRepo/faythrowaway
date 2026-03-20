@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct FayThrowawayApp: App {
-    @StateObject var coordinator: RootCoordinator = .init()
+    @State var coordinator: RootCoordinator = .init(dependencyContainer: DependencyContainer.shared)
     var body: some Scene {
         WindowGroup {
             RootCoordinatorView(coordinator: coordinator)

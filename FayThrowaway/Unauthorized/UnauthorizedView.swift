@@ -15,6 +15,14 @@ struct UnauthorizedView: View {
     
     var body: some View {
         VStack {
+            if let error = viewModel.error {
+                Text(error.localizedDescription)
+                    .padding()
+                    .font(.caption)
+                    .foregroundStyle(.pink)
+                    .opacity(viewModel.error == nil ? 0 : 1)
+            }
+            
             Spacer()
             
             Button {
@@ -45,48 +53,12 @@ struct UnauthorizedView: View {
                 .font(.caption)
                 .multilineTextAlignment(.leading)
         }
-        .overlay {
-            VStack {
-                ZStack {
-                    Text("Yay Fay")
-                        .fontDesign(.monospaced)
-                        .font(.title)
-                        .foregroundStyle(.accent)
-                        .padding()
-                        .glow()
-                }
-                
-                Spacer()
-            }
-        }
         .background {
-                Image(.logo)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .glow()
-        }
-        .overlay {
-            if let error = viewModel.error {
-                VStack {
-                    LottieView(animation: .named("Error"))
-                        .playbackMode(.playing(.fromProgress(0, toProgress: 1, loopMode: .playOnce)))
-                        .animationDidFinish { completed in
-                            withAnimation {
-                                viewModel.error = nil
-                            }
-                        }
-                        .frame(width: 100, height: 100)
-                        .padding()
-                    
-                    Text(error.localizedDescription)
-                        .padding(.bottom)
-                        .padding(.horizontal)
-                        .multilineTextAlignment(.center)
-                        .font(.callout)
-                }
-                .background(.background)
-                .clipShape(.rect(cornerRadius: 12.0))
-            }
+            Image(.logo)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding()
+                .glow()
         }
     }
 }
@@ -122,6 +94,6 @@ extension View {
 
 #Preview {
     let eventPublisher = PassthroughSubject<UnauthorizedEvent, Never>()
-    let viewModel = UnauthorizedViewModel(unauthorizedEventPublisher: eventPublisher)
-    return UnauthorizedView(viewModel: viewModel)
+    let viewModel = UnauthorizedViewModel(dependencyContainer: MockDependencyContainer(), unauthorizedEventPublisher: eventPublisher)
+    UnauthorizedView(viewModel: viewModel)
 }

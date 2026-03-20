@@ -27,8 +27,8 @@ struct AppointmentsResponse: Codable {
     let appointments: [Appointment]
 }
 
-struct Appointment: Codable, Identifiable {
-    var id: String {
+public struct Appointment: Codable, Identifiable {
+    public var id: String {
         appointmentId
     }
                             
@@ -45,15 +45,11 @@ struct Appointment: Codable, Identifiable {
     let providerId: String
     let status: AppointmentStatus
     let appointmentType: AppointmentType
-    // do conversion from string to date in viewModel or in decoder
-    // decoder.dateDecodingStrategy = .iso8601
-    let start: String
-    let end: String
+    let start: Date
+    let end: Date
     let durationInMinutes: Int
     let recurrenceType: RecurrenceType
     
-    // do conversion from snakcase here or in decoder
-    // decoder.keyDecodingStrategy = .convertFromSnakeCase
     enum CodingKeys: String, CodingKey {
         case appointmentId = "appointment_id"
         case patientId = "patient_id"
@@ -73,12 +69,4 @@ struct Appointment: Codable, Identifiable {
     var isPast: Bool {
         status == .occurred
     }
-}
-
-enum AppointmentsServiceError: Error {
-    case invalidURL
-    case networkError(Error)
-    case decodingError
-    case unauthorized
-    case serverError(Int)
 }

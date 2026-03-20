@@ -15,18 +15,16 @@ struct AppointmentsHeaderView: View {
         HStack {
             Text("Appointments")
                 .font(.custom("Manrope-ExtraBold", size: 24))
-                .lineSpacing(12)
                 .padding()
             
             Spacer()
             
             Button {
-                viewModel.veryNice()
+                viewModel.createMeeting()
             } label: {
                 Label {
                     Text("New")
                         .font(.custom("Manrope-Bold", size: 14))
-                        .lineSpacing(7)
                 } icon: {
                     Image(.plus)
                 }
@@ -43,7 +41,7 @@ struct AppointmentsHeaderView: View {
 }
 
 #Preview {
-    let eventPub = PassthroughSubject<GreatSuccessEvent, Never>()
-    let viewModel = AppointmentsHeaderViewModel(greatSuccessEventPub: eventPub)
+    let eventPub = PassthroughSubject<AppointmentEvent, Never>()
+    let viewModel = AppointmentsHeaderViewModel(appointmentEventPub: eventPub)
     return AppointmentsHeaderView(viewModel: viewModel)
 }

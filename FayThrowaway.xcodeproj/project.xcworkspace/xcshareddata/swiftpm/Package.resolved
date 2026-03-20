@@ -1,4 +1,5 @@
 {
+  "originHash" : "b744c75f78262bc048117ec9d8abc1edba8b03b64ed5673cb8bdb06a61232083",
   "pins" : [
     {
       "identity" : "lottie-spm",
@@ -8,7 +9,25 @@
         "revision" : "04f2fd18cc9404a0a0917265a449002674f24ec9",
         "version" : "4.5.2"
       }
+    },
+    {
+      "identity" : "milakeychain",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JustinLeeRepo/MilaKeychain/",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d6d2e4ffb1c42255f34ead587db66eecce591613"
+      }
+    },
+    {
+      "identity" : "milanetwork",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JustinLeeRepo/MilaNetwork",
+      "state" : {
+        "branch" : "main",
+        "revision" : "83cad353809dde70897a567c62793d84702ff393"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

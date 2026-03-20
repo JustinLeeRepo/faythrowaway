@@ -19,15 +19,10 @@ struct AppointmentsView: View {
                 .padding(.vertical)
         }
         .overlay {
-            if viewModel.greatSuccess {
+            if viewModel.joinMeeting || viewModel.createMeeting {
                 lottieSuccess {
-                    viewModel.greatSuccess = false
-                }
-            }
-            
-            if viewModel.veryNice {
-                lottieSuccess {
-                    viewModel.veryNice = false
+                    viewModel.joinMeeting = false
+                    viewModel.createMeeting = false
                 }
             }
         }
@@ -46,6 +41,6 @@ struct AppointmentsView: View {
 }
 
 #Preview {
-    let viewModel = AppointmentsViewModel()
-    return AppointmentsView(viewModel: viewModel)
+    let viewModel = AppointmentsViewModel(dependencyContainer: MockDependencyContainer())
+    AppointmentsView(viewModel: viewModel)
 }

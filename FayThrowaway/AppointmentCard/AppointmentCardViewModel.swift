@@ -10,44 +10,35 @@ import Foundation
 
 class AppointmentCardViewModel {
     let appointment: Appointment
-    let timeFormatter: DateFormatter
-    let timezoneFormatter: DateFormatter
-    let monthAbbreviator: DateFormatter
+    let dateFormatter: DateFormatter
     let isNextUpcoming: Bool
     
-    private let greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>
+    private let appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>
     
     init(appointment: Appointment,
-         timeFormatter: DateFormatter,
-         timezoneFormatter: DateFormatter,
-         monthAbbreviator: DateFormatter,
+         dateFormatter: DateFormatter,
          isNextUpcoming: Bool = false,
-         greatSuccessEventPub: PassthroughSubject<GreatSuccessEvent, Never>) {
+         appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>) {
         self.appointment = appointment
-        self.timeFormatter = timeFormatter
-        self.timezoneFormatter = timezoneFormatter
-        self.monthAbbreviator = monthAbbreviator
+        self.dateFormatter = dateFormatter
         self.isNextUpcoming = isNextUpcoming
-        self.greatSuccessEventPub = greatSuccessEventPub
+        self.appointmentEventPub = appointmentEventPub
     }
     
-    var startDate: Date? {
-        return ISO8601DateFormatter().date(from: appointment.start)
+    var startDate: Date {
+        appointment.start
     }
     
-    var endDate: Date? {
-        return ISO8601DateFormatter().date(from: appointment.end)
+    var endDate: Date {
+        appointment.end
     }
     
-    var monthAbbreviation: String? {
-        guard let startDate = startDate else { return nil }
-        
-        return monthAbbreviator.string(from: startDate).uppercased()
+    var monthAbbreviation: String {
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: startDate).uppercased()
     }
     
-    var dateDay: Int? {
-        guard let startDate = startDate else { return nil }
-        
+    var dateDay: Int {
         return Calendar.current.component(.day, from: startDate)
     }
     
@@ -56,26 +47,32 @@ class AppointmentCardViewModel {
     }
     
     var timeTitle: String {
-        if isNextUpcoming,
-           let startDate = startDate,
-           let endDate = endDate {
-            return "\(timeFormatter.string(from: startDate)) - \(timeFormatter.string(from: endDate)) \(timezoneFormatter.string(from: endDate))"
+        if isNextUpcoming {
+            dateFormatter.dateFormat = "h:mm a"
+            let startTime = dateFormatter.string(from: startDate)
+            let endTime = dateFormatter.string(from: endDate)
+            
+            dateFormatter.dateFormat = "z"
+            let timeZone = dateFormatter.string(from: endDate)
+            return "\(startTime) - \(endTime) (\(timeZone))"
         }
         
-        if let startDate = startDate {
-            return timeFormatter.string(from: startDate)
-        }
-        
-        return appointment.start
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: startDate)
     }
     
     var typeTitle: String {
-        isNextUpcoming ?
-        "\(appointment.appointmentType.rawValue) with \(appointment.providerName), \(appointment.providerType)" :
-        appointment.appointmentType.rawValue
+        let appointmentType = appointment.appointmentType.rawValue
+        if isNextUpcoming {
+            let providerName = appointment.providerName
+            let providerType = appointment.providerType
+            return "\(appointmentType) with \(providerName), \(providerType)"
+        }
+        
+        return appointmentType
     }
     
-    func greatSuccess() {
-        self.greatSuccessEventPub.send(.greatSuccess)
+    func joinMeeting() {
+        self.appointmentEventPub.send(.joinMeeting)
     }
 }
