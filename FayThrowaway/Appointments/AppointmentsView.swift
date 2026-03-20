@@ -5,6 +5,7 @@
 //  Created by Justin Lee on 6/27/25.
 //
 
+import DependencyContainer
 import Lottie
 import SwiftUI
 

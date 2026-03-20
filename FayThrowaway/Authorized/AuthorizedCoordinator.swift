@@ -6,6 +6,7 @@
 //
 
 import Combine
+import DependencyContainer
 
 class AuthorizedCoordinator: ObservableObject {
     enum Tab: UInt {

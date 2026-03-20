@@ -6,6 +6,7 @@
 //
 
 import Combine
+import DependencyContainer
 
 enum AppointmentTabEvent {
     case selectedTab(AppointmentTab)

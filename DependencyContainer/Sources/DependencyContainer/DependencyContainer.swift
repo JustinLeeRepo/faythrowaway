@@ -1,9 +1,6 @@
-//
-//  DependencyContainer.swift
-//  FayThrowaway
-//
-//  Created by Justin Lee on 3/19/26.
-//
+// The Swift Programming Language
+// https://docs.swift.org/swift-book
+
 
 import MilaKeychain
 import MilaNetwork
@@ -22,7 +19,7 @@ public class DependencyContainer: DependencyContainable {
     private let userStore: UserStorable
     private let networkService: NetworkServiceProtocol
     
-    static let shared = DependencyContainer()
+    public static let shared = DependencyContainer()
     
     private init() {
 
@@ -47,6 +44,8 @@ public class DependencyContainer: DependencyContainable {
 }
 
 public class MockDependencyContainer: DependencyContainable {
+    public init() {}
+    
     public func getUserStore() -> any UserStorable {
         MockUserStore()
     }

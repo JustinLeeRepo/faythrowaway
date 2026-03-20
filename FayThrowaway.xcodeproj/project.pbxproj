@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		360B82352F6B3A8E00DAF2AF /* MilaNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82342F6B3A8E00DAF2AF /* MilaNetwork */; };
 		360B82382F6B3BB700DAF2AF /* MilaKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82372F6B3BB700DAF2AF /* MilaKeychain */; };
-		360B823A2F6BDC5300DAF2AF /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B82392F6BDC4F00DAF2AF /* DependencyContainer.swift */; };
 		360B82432F6D308100DAF2AF /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82422F6D308100DAF2AF /* Services */; };
+		36BDBECE2F6D3F9D00C303AF /* DependencyContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 36BDBECD2F6D3F9D00C303AF /* DependencyContainer */; };
 		36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */; };
 		36D32BEA2E0DE513002415D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BE92E0DE513002415D5 /* Assets.xcassets */; };
 		36D32BED2E0DE513002415D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */; };
@@ -39,8 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		360B82392F6BDC4F00DAF2AF /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		360B82402F6D2DC400DAF2AF /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
+		36BDBECC2F6D3F2300C303AF /* DependencyContainer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DependencyContainer; sourceTree = "<group>"; };
 		36D32BE22E0DE512002415D5 /* FayThrowaway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FayThrowaway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FayThrowawayApp.swift; sourceTree = "<group>"; };
 		36D32BE92E0DE513002415D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +77,7 @@
 				360B82432F6D308100DAF2AF /* Services in Frameworks */,
 				360B82352F6B3A8E00DAF2AF /* MilaNetwork in Frameworks */,
 				36D32C0E2E0EA0F7002415D5 /* Lottie in Frameworks */,
+				36BDBECE2F6D3F9D00C303AF /* DependencyContainer in Frameworks */,
 				360B82382F6B3BB700DAF2AF /* MilaKeychain in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +95,7 @@
 		36D32BD92E0DE512002415D5 = {
 			isa = PBXGroup;
 			children = (
+				36BDBECC2F6D3F2300C303AF /* DependencyContainer */,
 				360B82402F6D2DC400DAF2AF /* Services */,
 				36D32BE42E0DE512002415D5 /* FayThrowaway */,
 				36D32C1B2E0EBA14002415D5 /* Manrope-VariableFont_wght.ttf */,
@@ -115,7 +117,6 @@
 			children = (
 				36D32C1D2E0EBA77002415D5 /* Info.plist */,
 				36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */,
-				360B82392F6BDC4F00DAF2AF /* DependencyContainer.swift */,
 				36D32BF32E0DE535002415D5 /* Root */,
 				36D32BFB2E0E0B37002415D5 /* UnauthorizedCoordinator */,
 				36D32C002E0E0BC5002415D5 /* Unauthorized */,
@@ -251,6 +252,7 @@
 				360B82342F6B3A8E00DAF2AF /* MilaNetwork */,
 				360B82372F6B3BB700DAF2AF /* MilaKeychain */,
 				360B82422F6D308100DAF2AF /* Services */,
+				36BDBECD2F6D3F9D00C303AF /* DependencyContainer */,
 			);
 			productName = FayThrowaway;
 			productReference = 36D32BE22E0DE512002415D5 /* FayThrowaway.app */;
@@ -326,7 +328,6 @@
 				36D32C042E0E0BE2002415D5 /* UnauthorizedViewModel.swift in Sources */,
 				36D32BFF2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift in Sources */,
 				36D32C2E2E0F3753002415D5 /* AppointmentsTabViewModel.swift in Sources */,
-				360B823A2F6BDC5300DAF2AF /* DependencyContainer.swift in Sources */,
 				36D32C252E0F3429002415D5 /* AppointmentCardView.swift in Sources */,
 				36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */,
 				36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */,
@@ -583,6 +584,10 @@
 		360B82422F6D308100DAF2AF /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Services;
+		};
+		36BDBECD2F6D3F9D00C303AF /* DependencyContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DependencyContainer;
 		};
 		36D32C0D2E0EA0F7002415D5 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
