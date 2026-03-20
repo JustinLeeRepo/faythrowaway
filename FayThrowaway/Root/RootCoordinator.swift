@@ -9,6 +9,7 @@ import Combine
 import DependencyContainer
 import Services
 import SwiftUI
+import Unauthorized
 
 @Observable
 class RootCoordinator {

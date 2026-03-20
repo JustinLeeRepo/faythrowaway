@@ -10,18 +10,13 @@
 		360B82352F6B3A8E00DAF2AF /* MilaNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82342F6B3A8E00DAF2AF /* MilaNetwork */; };
 		360B82382F6B3BB700DAF2AF /* MilaKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82372F6B3BB700DAF2AF /* MilaKeychain */; };
 		360B82432F6D308100DAF2AF /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 360B82422F6D308100DAF2AF /* Services */; };
+		3680C7002F6D44CA00E2A1AE /* Unauthorized in Frameworks */ = {isa = PBXBuildFile; productRef = 3680C6FF2F6D44CA00E2A1AE /* Unauthorized */; };
 		36BDBECE2F6D3F9D00C303AF /* DependencyContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 36BDBECD2F6D3F9D00C303AF /* DependencyContainer */; };
 		36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */; };
 		36D32BEA2E0DE513002415D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BE92E0DE513002415D5 /* Assets.xcassets */; };
 		36D32BED2E0DE513002415D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */; };
 		36D32BF52E0DE548002415D5 /* RootCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */; };
 		36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BF62E0DE572002415D5 /* RootCoordinator.swift */; };
-		36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */; };
-		36D32BFF2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */; };
-		36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */; };
-		36D32C042E0E0BE2002415D5 /* UnauthorizedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C032E0E0BE2002415D5 /* UnauthorizedViewModel.swift */; };
-		36D32C072E0E0EE5002415D5 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C062E0E0EE5002415D5 /* SigninViewModel.swift */; };
-		36D32C092E0E0EF4002415D5 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C082E0E0EF4002415D5 /* SigninView.swift */; };
 		36D32C0E2E0EA0F7002415D5 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 36D32C0D2E0EA0F7002415D5 /* Lottie */; };
 		36D32C112E0EAF76002415D5 /* AuthorizedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C102E0EAF76002415D5 /* AuthorizedCoordinator.swift */; };
 		36D32C132E0EAF8A002415D5 /* AuthorizedCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D32C122E0EAF8A002415D5 /* AuthorizedCoordinatorView.swift */; };
@@ -40,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		360B82402F6D2DC400DAF2AF /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
+		3680C6FE2F6D446E00E2A1AE /* Unauthorized */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Unauthorized; sourceTree = "<group>"; };
 		36BDBECC2F6D3F2300C303AF /* DependencyContainer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DependencyContainer; sourceTree = "<group>"; };
 		36D32BE22E0DE512002415D5 /* FayThrowaway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FayThrowaway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FayThrowawayApp.swift; sourceTree = "<group>"; };
@@ -47,12 +43,6 @@
 		36D32BEC2E0DE513002415D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatorView.swift; sourceTree = "<group>"; };
 		36D32BF62E0DE572002415D5 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedCoordinator.swift; sourceTree = "<group>"; };
-		36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedCoordinatorView.swift; sourceTree = "<group>"; };
-		36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedView.swift; sourceTree = "<group>"; };
-		36D32C032E0E0BE2002415D5 /* UnauthorizedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedViewModel.swift; sourceTree = "<group>"; };
-		36D32C062E0E0EE5002415D5 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
-		36D32C082E0E0EF4002415D5 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
 		36D32C102E0EAF76002415D5 /* AuthorizedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedCoordinator.swift; sourceTree = "<group>"; };
 		36D32C122E0EAF8A002415D5 /* AuthorizedCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedCoordinatorView.swift; sourceTree = "<group>"; };
 		36D32C152E0EB6FB002415D5 /* AppointmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsViewModel.swift; sourceTree = "<group>"; };
@@ -78,6 +68,7 @@
 				360B82352F6B3A8E00DAF2AF /* MilaNetwork in Frameworks */,
 				36D32C0E2E0EA0F7002415D5 /* Lottie in Frameworks */,
 				36BDBECE2F6D3F9D00C303AF /* DependencyContainer in Frameworks */,
+				3680C7002F6D44CA00E2A1AE /* Unauthorized in Frameworks */,
 				360B82382F6B3BB700DAF2AF /* MilaKeychain in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +86,7 @@
 		36D32BD92E0DE512002415D5 = {
 			isa = PBXGroup;
 			children = (
+				3680C6FE2F6D446E00E2A1AE /* Unauthorized */,
 				36BDBECC2F6D3F2300C303AF /* DependencyContainer */,
 				360B82402F6D2DC400DAF2AF /* Services */,
 				36D32BE42E0DE512002415D5 /* FayThrowaway */,
@@ -118,9 +110,6 @@
 				36D32C1D2E0EBA77002415D5 /* Info.plist */,
 				36D32BE52E0DE512002415D5 /* FayThrowawayApp.swift */,
 				36D32BF32E0DE535002415D5 /* Root */,
-				36D32BFB2E0E0B37002415D5 /* UnauthorizedCoordinator */,
-				36D32C002E0E0BC5002415D5 /* Unauthorized */,
-				36D32C052E0E0ED4002415D5 /* Signin */,
 				36D32C0F2E0EAF63002415D5 /* Authorized */,
 				36D32C142E0EB6BE002415D5 /* Appointments */,
 				36D32C342E0F42DA002415D5 /* AppointmentsHeader */,
@@ -148,33 +137,6 @@
 				36D32BF42E0DE548002415D5 /* RootCoordinatorView.swift */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		36D32BFB2E0E0B37002415D5 /* UnauthorizedCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-				36D32BFC2E0E0B86002415D5 /* UnauthorizedCoordinator.swift */,
-				36D32BFE2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift */,
-			);
-			path = UnauthorizedCoordinator;
-			sourceTree = "<group>";
-		};
-		36D32C002E0E0BC5002415D5 /* Unauthorized */ = {
-			isa = PBXGroup;
-			children = (
-				36D32C032E0E0BE2002415D5 /* UnauthorizedViewModel.swift */,
-				36D32C012E0E0BD8002415D5 /* UnauthorizedView.swift */,
-			);
-			path = Unauthorized;
-			sourceTree = "<group>";
-		};
-		36D32C052E0E0ED4002415D5 /* Signin */ = {
-			isa = PBXGroup;
-			children = (
-				36D32C062E0E0EE5002415D5 /* SigninViewModel.swift */,
-				36D32C082E0E0EF4002415D5 /* SigninView.swift */,
-			);
-			path = Signin;
 			sourceTree = "<group>";
 		};
 		36D32C0F2E0EAF63002415D5 /* Authorized */ = {
@@ -253,6 +215,7 @@
 				360B82372F6B3BB700DAF2AF /* MilaKeychain */,
 				360B82422F6D308100DAF2AF /* Services */,
 				36BDBECD2F6D3F9D00C303AF /* DependencyContainer */,
+				3680C6FF2F6D44CA00E2A1AE /* Unauthorized */,
 			);
 			productName = FayThrowaway;
 			productReference = 36D32BE22E0DE512002415D5 /* FayThrowaway.app */;
@@ -315,22 +278,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D32C162E0EB6FB002415D5 /* AppointmentsViewModel.swift in Sources */,
-				36D32BFD2E0E0B86002415D5 /* UnauthorizedCoordinator.swift in Sources */,
 				36D32C112E0EAF76002415D5 /* AuthorizedCoordinator.swift in Sources */,
 				36D32C232E0ECF16002415D5 /* AppointmentListView.swift in Sources */,
 				36D32C2B2E0F34CF002415D5 /* AppointmentListViewModel.swift in Sources */,
 				36D32BF72E0DE572002415D5 /* RootCoordinator.swift in Sources */,
 				36D32C282E0F346D002415D5 /* AppointmentCardViewModel.swift in Sources */,
-				36D32C092E0E0EF4002415D5 /* SigninView.swift in Sources */,
 				36D32C362E0F42F7002415D5 /* AppointmentsHeaderViewModel.swift in Sources */,
-				36D32C072E0E0EE5002415D5 /* SigninViewModel.swift in Sources */,
 				36D32C132E0EAF8A002415D5 /* AuthorizedCoordinatorView.swift in Sources */,
-				36D32C042E0E0BE2002415D5 /* UnauthorizedViewModel.swift in Sources */,
-				36D32BFF2E0E0B94002415D5 /* UnauthorizedCoordinatorView.swift in Sources */,
 				36D32C2E2E0F3753002415D5 /* AppointmentsTabViewModel.swift in Sources */,
 				36D32C252E0F3429002415D5 /* AppointmentCardView.swift in Sources */,
 				36D32BE62E0DE512002415D5 /* FayThrowawayApp.swift in Sources */,
-				36D32C022E0E0BD8002415D5 /* UnauthorizedView.swift in Sources */,
 				36D32C1F2E0EC185002415D5 /* AppointmentsTabView.swift in Sources */,
 				36D32C1A2E0EB773002415D5 /* AppointmentsHeaderView.swift in Sources */,
 				36D32BF52E0DE548002415D5 /* RootCoordinatorView.swift in Sources */,
@@ -584,6 +541,10 @@
 		360B82422F6D308100DAF2AF /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Services;
+		};
+		3680C6FF2F6D44CA00E2A1AE /* Unauthorized */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Unauthorized;
 		};
 		36BDBECD2F6D3F9D00C303AF /* DependencyContainer */ = {
 			isa = XCSwiftPackageProductDependency;

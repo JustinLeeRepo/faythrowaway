@@ -7,7 +7,6 @@
 
 import Combine
 import DependencyContainer
-import Lottie
 import SwiftUI
 
 struct UnauthorizedView: View {
@@ -55,7 +54,7 @@ struct UnauthorizedView: View {
                 .multilineTextAlignment(.leading)
         }
         .background {
-            Image(.logo)
+            Image("Logo", bundle: .main)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding()

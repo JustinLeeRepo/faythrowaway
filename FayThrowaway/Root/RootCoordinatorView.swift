@@ -7,6 +7,7 @@
 
 import DependencyContainer
 import SwiftUI
+import Unauthorized
 
 struct RootCoordinatorView: View {
     var coordinator: RootCoordinator

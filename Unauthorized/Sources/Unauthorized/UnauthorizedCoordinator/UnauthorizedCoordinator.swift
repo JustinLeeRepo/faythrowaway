@@ -13,7 +13,7 @@ enum UnauthorizedEvent {
     case proceedToSignIn
 }
 
-class UnauthorizedCoordinator: ObservableObject {
+public class UnauthorizedCoordinator: ObservableObject {
     @Published var path = NavigationPath()
     
     let unauthorizedViewModel: UnauthorizedViewModel
@@ -22,7 +22,7 @@ class UnauthorizedCoordinator: ObservableObject {
     private let unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     
-    init(dependencyContainer: DependencyContainable) {
+    public init(dependencyContainer: DependencyContainable) {
         let unauthorizedEventPublisher = PassthroughSubject<UnauthorizedEvent, Never>()
         
         self.unauthorizedEventPublisher = unauthorizedEventPublisher

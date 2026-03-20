@@ -8,9 +8,14 @@
 import DependencyContainer
 import SwiftUI
 
-struct UnauthorizedCoordinatorView: View {
+public struct UnauthorizedCoordinatorView: View {
     @ObservedObject var coordinator: UnauthorizedCoordinator
-    var body: some View {
+    
+    public init(coordinator: UnauthorizedCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    public var body: some View {
         NavigationStack(path: $coordinator.path) {
             UnauthorizedView(viewModel: coordinator.unauthorizedViewModel)
                 .navigationDestination(for: SignInViewModel.self) { viewModel in
