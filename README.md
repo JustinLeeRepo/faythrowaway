@@ -7,14 +7,15 @@
 https://github.com/user-attachments/assets/9b8ef25b-0b19-4cf3-a10a-ed7b0758ade3
 
 There is a a loading state that utilizes placeholders, an empty state, an error state, and a ready state when the appointments are fetched.
+
 Auth Tokens are stored in the keychain.
-Utilizes reusable remote SPM packages (networking and keychain).
-Breaks down code base into local SPM packages (depedencyContainer, unauthorized feature, authorized feature, and services [the local SPM package, services, consumes reusable remote spm packages: keychain and network client])
 
 # Implementation Notes / Decisions
 Tried to keep components separated and as small as possible
 
-TODO: add protocol that abstracts path, method, body, token 
+Utilizes reusable remote SPM packages (networking and keychain).
+
+Breaks down code base into local SPM packages (depedencyContainer, unauthorized feature, authorized feature, and services [the local SPM package, services, consumes reusable remote spm packages: keychain and network client])
 
 
 # Login & Auth
