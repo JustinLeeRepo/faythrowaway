@@ -138,3 +138,174 @@ Returns a list of appointments:
 ## **Service idling**
 
 Please note that the service will idle if not accessed for an extended period of time. The first response after extended idle time will be significantly slower than normal.
+
+
+## **Service Disruption**
+
+```json
+{
+  "appointments": [
+    {
+      "appointment_id": "mzdqmf1786",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-01-27T17:45:00Z",
+      "end": "2025-01-27T18:30:00Z",
+      "duration_in_minutes": 45,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "dcb02amiu9",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-06-20T11:00:00Z",
+      "end": "2025-06-20T12:00:00Z",
+      "duration_in_minutes": 60,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "cjy7yp7nm5",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-08-10T10:45:00Z",
+      "end": "2025-08-10T11:30:00Z",
+      "duration_in_minutes": 45,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "n30kl8mpvo",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-08-15T11:45:00Z",
+      "end": "2025-08-15T12:30:00Z",
+      "duration_in_minutes": 45,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "509teq10vh",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-10-10T17:45:00Z",
+      "end": "2025-10-10T18:30:00Z",
+      "duration_in_minutes": 45,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "fkvedohjev",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-12-11T20:00:00Z",
+      "end": "2025-12-11T21:00:00Z",
+      "duration_in_minutes": 60,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "v7y0i184hf",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-12-15T17:00:00Z",
+      "end": "2025-12-15T18:00:00Z",
+      "duration_in_minutes": 60,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "uarlir2drj",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2025-12-19T20:00:00Z",
+      "end": "2025-12-19T21:00:00Z",
+      "duration_in_minutes": 60,
+      "recurrence_type": "Weekly"
+    },
+    {
+      "appointment_id": "q4n8sk2wlp",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2026-09-18T15:00:00Z",
+      "end": "2026-09-18T15:45:00Z",
+      "duration_in_minutes": 45,
+      "recurrence_type": "Monthly"
+    },
+    {
+      "appointment_id": "h2bz9mxd3q",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2026-10-23T16:30:00Z",
+      "end": "2026-10-23T17:30:00Z",
+      "duration_in_minutes": 60,
+      "recurrence_type": "Monthly"
+    },
+    {
+      "appointment_id": "r8ty6vk1nc",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2026-11-20T14:15:00Z",
+      "end": "2026-11-20T15:00:00Z",
+      "duration_in_minutes": 45,
+      "recurrence_type": "Monthly"
+    },
+    {
+      "appointment_id": "p6ld0we4zs",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Scheduled",
+      "appointment_type": "Follow-up",
+      "start": "2026-12-18T18:00:00Z",
+      "end": "2026-12-18T18:30:00Z",
+      "duration_in_minutes": 30,
+      "recurrence_type": "Monthly"
+    },
+    {
+      "appointment_id": "a9xdflac00",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Occurred",
+      "appointment_type": "Follow-up",
+      "start": "2024-09-10T17:45:00Z",
+      "end": "2024-09-10T18:30:00Z",
+      "duration_in_minutes": 45,
+      "recurrence_type": "Monthly"
+    },
+    {
+      "appointment_id": "x1r16i380u",
+      "patient_id": "1",
+      "provider_id": "100",
+      "status": "Occurred",
+      "appointment_type": "Initial consultation",
+      "start": "2024-05-28T20:00:00Z",
+      "end": "2024-05-28T21:00:00Z",
+      "duration_in_minutes": 60,
+      "recurrence_type": "Weekly"
+    }
+  ]
+}
+```
+
+for request
+```
+curl -X GET "https://node-api-for-candidates.onrender.com/appointments" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWdlIjo0MiwibmFtZSI6IkpvaG4gRG9lIiwidXNlcm5hbWUiOiJqb2huIiwicGFzc3dvcmQiOiIxMjM0NSIsImlhdCI6MTc3NDAwMjk4OH0.FNy6LMQBfIkz1fP1Sx-DYoKY28HFaP2EQiTbOcBvp1o"
+```
