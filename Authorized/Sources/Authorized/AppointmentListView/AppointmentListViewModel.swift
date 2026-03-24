@@ -44,12 +44,12 @@ class AppointmentListViewModel: ObservableObject {
         return selectedTab == .upcoming ? upcomingAppointments : pastAppointments
     }
     
-    var upcomingAppointments: [Appointment] {
+    private var upcomingAppointments: [Appointment] {
         appointments
             .filter { $0.isUpcoming }
     }
     
-    var pastAppointments: [Appointment] {
+    private var pastAppointments: [Appointment] {
         appointments
             .filter { $0.isPast }
     }
@@ -66,11 +66,6 @@ class AppointmentListViewModel: ObservableObject {
         
         self.appointmentService = dependencyContainer.getAppointmentService()
         setupListener()
-        
-        //move to task modifier in view?
-        Task {
-            await fetchAppointments()
-        }
     }
     
     func appointmentCardViewModel(appointment: Appointment, isFirst: Bool) -> AppointmentCardViewModel {

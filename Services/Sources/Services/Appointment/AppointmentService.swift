@@ -45,7 +45,7 @@ public class AppointmentService: AppointmentServicable {
     private let userStore: UserStorable
 
     public var placeholderAppointments: [Appointment] {
-        Array(mockAppointments[0..<3])
+        Appointment.mockList
     }
     
     public init(networkService: NetworkServiceProtocol, userStore: UserStorable) {
@@ -65,71 +65,15 @@ public class AppointmentService: AppointmentServicable {
 
 public class MockAppointmentService: AppointmentServicable {
     public init() {}
+    public var shouldThrow = false
     public var placeholderAppointments: [Appointment] {
-        Array(mockAppointments[0..<3])
+        Appointment.mockList
     }
     
     public func fetchAppointments() async throws -> [Appointment] {
+        guard !shouldThrow else { throw ServiceError.unauthorized }
         try await Task.sleep(nanoseconds: 1_000_000_000)
         
-        return mockAppointments
+        return Appointment.mockList
     }
 }
-
-var mockAppointments = [
-    Appointment(
-        appointmentId: "appt_1",
-        patientId: "patient_1",
-        providerId: "provider_1",
-        status: .scheduled,
-        appointmentType: .initialConsultation,
-        start: Date().addingTimeInterval(60 * 60 * 24),
-        end: Date().addingTimeInterval(60 * 60 * 25),
-        durationInMinutes: 60,
-        recurrenceType: .weekly
-    ),
-    Appointment(
-        appointmentId: "appt_2",
-        patientId: "patient_1",
-        providerId: "provider_2",
-        status: .scheduled,
-        appointmentType: .followUp,
-        start: Date().addingTimeInterval(60 * 60 * 48),
-        end: Date().addingTimeInterval(60 * 60 * 49),
-        durationInMinutes: 60,
-        recurrenceType: .monthly
-    ),
-    Appointment(
-        appointmentId: "appt_3",
-        patientId: "patient_1",
-        providerId: "provider_1",
-        status: .occurred,
-        appointmentType: .initialConsultation,
-        start: Date().addingTimeInterval(-60 * 60 * 24 * 3),
-        end: Date().addingTimeInterval(-60 * 60 * 24 * 3 + 3600),
-        durationInMinutes: 60,
-        recurrenceType: .weekly
-    ),
-    Appointment(
-        appointmentId: "appt_4",
-        patientId: "patient_2",
-        providerId: "provider_3",
-        status: .occurred,
-        appointmentType: .followUp,
-        start: Date().addingTimeInterval(-60 * 60 * 24 * 7),
-        end: Date().addingTimeInterval(-60 * 60 * 24 * 7 + 1800),
-        durationInMinutes: 30,
-        recurrenceType: .monthly
-    ),
-    Appointment(
-        appointmentId: "appt_5",
-        patientId: "patient_3",
-        providerId: "provider_2",
-        status: .scheduled,
-        appointmentType: .followUp,
-        start: Date().addingTimeInterval(60 * 60 * 6),
-        end: Date().addingTimeInterval(60 * 60 * 7),
-        durationInMinutes: 60,
-        recurrenceType: .weekly
-    )
-]

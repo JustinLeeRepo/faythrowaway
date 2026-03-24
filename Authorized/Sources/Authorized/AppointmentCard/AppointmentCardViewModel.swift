@@ -26,11 +26,11 @@ class AppointmentCardViewModel {
         self.appointmentEventPub = appointmentEventPub
     }
     
-    var startDate: Date {
+    private var startDate: Date {
         appointment.start
     }
     
-    var endDate: Date {
+    private var endDate: Date {
         appointment.end
     }
     
@@ -43,7 +43,7 @@ class AppointmentCardViewModel {
         return Calendar.current.component(.day, from: startDate)
     }
     
-    var isUpcomming: Bool {
+    private var isUpcomming: Bool {
         return appointment.isUpcoming
     }
     

@@ -44,17 +44,27 @@ public class DependencyContainer: DependencyContainable {
 }
 
 public class MockDependencyContainer: DependencyContainable {
-    public init() {}
+    private let appointmentService: AppointmentServicable
+    private let userStore: UserStorable
+    private let authService: AuthServicable
     
-    public func getUserStore() -> any UserStorable {
-        MockUserStore()
+    public init(appointmentService: AppointmentServicable = MockAppointmentService(),
+         authService: AuthServicable = MockAuthService(),
+         userStore: UserStorable = MockUserStore()) {
+        self.appointmentService = appointmentService
+        self.userStore = userStore
+        self.authService = authService
+    }
+    
+    public func getUserStore() -> UserStorable {
+        userStore
     }
     
     public func getAuthService() -> AuthServicable {
-        MockAuthService()
+        authService
     }
     
     public func getAppointmentService() -> AppointmentServicable {
-        MockAppointmentService()
+        appointmentService
     }
 }

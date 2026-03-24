@@ -29,6 +29,9 @@ struct AppointmentListView: View {
                 .redacted(reason: viewModel.isLoading ? .placeholder : [])
             }
         }
+        .task {
+            await viewModel.fetchAppointments()
+        }
         .refreshable {
             Task {
                 await viewModel.fetchAppointments()

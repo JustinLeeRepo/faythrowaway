@@ -24,6 +24,7 @@ let package = Package(
             name: "Authorized",
             dependencies: ["Services", "DependencyContainer"]
         ),
-
+        .testTarget(name: "AuthorizedTests",
+                    dependencies: ["Authorized"])
     ]
 )
