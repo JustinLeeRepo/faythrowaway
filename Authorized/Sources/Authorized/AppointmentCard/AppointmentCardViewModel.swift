@@ -14,16 +14,16 @@ class AppointmentCardViewModel {
     let dateFormatter: DateFormatter
     let isNextUpcoming: Bool
     
-    private let appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>
+    private let appointmentEventSubject: PassthroughSubject<AppointmentEvent, Never>
     
     init(appointment: Appointment,
          dateFormatter: DateFormatter,
          isNextUpcoming: Bool = false,
-         appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>) {
+         appointmentEventSubject: PassthroughSubject<AppointmentEvent, Never>) {
         self.appointment = appointment
         self.dateFormatter = dateFormatter
         self.isNextUpcoming = isNextUpcoming
-        self.appointmentEventPub = appointmentEventPub
+        self.appointmentEventSubject = appointmentEventSubject
     }
     
     private var startDate: Date {
@@ -74,6 +74,6 @@ class AppointmentCardViewModel {
     }
     
     func joinMeeting() {
-        self.appointmentEventPub.send(.joinMeeting)
+        self.appointmentEventSubject.send(.joinMeeting)
     }
 }

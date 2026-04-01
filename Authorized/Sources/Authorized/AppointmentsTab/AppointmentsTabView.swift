@@ -40,7 +40,7 @@ struct AppointmentsTabView: View {
 }
 
 #Preview {
-    let eventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
-    let viewModel = AppointmentsTabViewModel(eventPublisher: eventPublisher)
+    let eventSubject = PassthroughSubject<AppointmentTabEvent, Never>()
+    let viewModel = AppointmentsTabViewModel(eventSubject: eventSubject)
     return AppointmentsTabView(viewModel: viewModel)
 }

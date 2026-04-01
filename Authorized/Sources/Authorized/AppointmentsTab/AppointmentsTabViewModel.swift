@@ -15,13 +15,13 @@ enum AppointmentTab: String {
 class AppointmentsTabViewModel: ObservableObject {
     @Published var selectedTab: AppointmentTab = .upcoming
     
-    private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
+    private let appointmentTabEventSubject: PassthroughSubject<AppointmentTabEvent, Never>
     
-    init(eventPublisher: PassthroughSubject<AppointmentTabEvent, Never>) {
-        self.appointmentTabEventPublisher = eventPublisher
+    init(eventSubject: PassthroughSubject<AppointmentTabEvent, Never>) {
+        self.appointmentTabEventSubject = eventSubject
     }
     
     func switchTab() {
-        appointmentTabEventPublisher.send(.selectedTab(selectedTab))
+        appointmentTabEventSubject.send(.selectedTab(selectedTab))
     }
 }

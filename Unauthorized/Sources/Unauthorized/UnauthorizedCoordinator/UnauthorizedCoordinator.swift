@@ -19,14 +19,14 @@ public class UnauthorizedCoordinator: ObservableObject {
     let unauthorizedViewModel: UnauthorizedViewModel
     let signInViewModel: SignInViewModel
     
-    private let unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>
+    private let unauthorizedEventPublisher: AnyPublisher<UnauthorizedEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     
     public init(dependencyContainer: DependencyContainable) {
-        let unauthorizedEventPublisher = PassthroughSubject<UnauthorizedEvent, Never>()
+        let unauthorizedEventSubject = PassthroughSubject<UnauthorizedEvent, Never>()
         
-        self.unauthorizedEventPublisher = unauthorizedEventPublisher
-        self.unauthorizedViewModel = UnauthorizedViewModel(dependencyContainer: dependencyContainer, unauthorizedEventPublisher: unauthorizedEventPublisher)
+        self.unauthorizedEventPublisher = unauthorizedEventSubject.eraseToAnyPublisher()
+        self.unauthorizedViewModel = UnauthorizedViewModel(dependencyContainer: dependencyContainer, unauthorizedEventSubject: unauthorizedEventSubject)
         self.signInViewModel = SignInViewModel(dependencyContainer: dependencyContainer)
         
         setupListener()

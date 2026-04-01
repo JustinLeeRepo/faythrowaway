@@ -24,21 +24,21 @@ class AppointmentsViewModel: ObservableObject {
     let appointmentsHeaderViewModel: AppointmentsHeaderViewModel
     let appointmentListViewModel: AppointmentListViewModel
     let appointmentsTabViewModel: AppointmentsTabViewModel
-    private let appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>
-    private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
+    private let appointmentEventPub: AnyPublisher<AppointmentEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     
     init(dependencyContainer: DependencyContainable) {
         
-        let appointmentEventPub = PassthroughSubject<AppointmentEvent, Never>()
-        self.appointmentEventPub = appointmentEventPub
+        let appointmentEventSubject = PassthroughSubject<AppointmentEvent, Never>()
+        let appointmentEventPublisher = appointmentEventSubject.eraseToAnyPublisher()
+        self.appointmentEventPub = appointmentEventPublisher
         
-        let appointmentTabEventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
-        self.appointmentTabEventPublisher = appointmentTabEventPublisher
+        let appointmentTabEventSubject = PassthroughSubject<AppointmentTabEvent, Never>()
+        let appointmentTabEventPublisher = appointmentTabEventSubject.eraseToAnyPublisher()
         
-        self.appointmentsHeaderViewModel = AppointmentsHeaderViewModel(appointmentEventPub: appointmentEventPub)
-        self.appointmentListViewModel = AppointmentListViewModel(dependencyContainer: dependencyContainer, appointmentTabEventPublisher: appointmentTabEventPublisher, eventPublisher: appointmentEventPub)
-        self.appointmentsTabViewModel = AppointmentsTabViewModel(eventPublisher: appointmentTabEventPublisher)
+        self.appointmentsHeaderViewModel = AppointmentsHeaderViewModel(appointmentEventSubject: appointmentEventSubject)
+        self.appointmentListViewModel = AppointmentListViewModel(dependencyContainer: dependencyContainer, appointmentTabEventPublisher: appointmentTabEventPublisher, eventSubject: appointmentEventSubject)
+        self.appointmentsTabViewModel = AppointmentsTabViewModel(eventSubject: appointmentTabEventSubject)
         
         setupListener()
     }

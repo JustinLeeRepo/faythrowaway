@@ -14,19 +14,19 @@ class UnauthorizedViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: Error?
     
-    private let unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>
+    private let unauthorizedEventSubject: PassthroughSubject<UnauthorizedEvent, Never>
     private let authService: AuthServicable
     
     init(
         dependencyContainer: DependencyContainable,
-        unauthorizedEventPublisher: PassthroughSubject<UnauthorizedEvent, Never>
+        unauthorizedEventSubject: PassthroughSubject<UnauthorizedEvent, Never>
     ) {
         self.authService = dependencyContainer.getAuthService()
-        self.unauthorizedEventPublisher = unauthorizedEventPublisher
+        self.unauthorizedEventSubject = unauthorizedEventSubject
     }
     
     func proceedToSignIn() {
-        unauthorizedEventPublisher.send(.proceedToSignIn)
+        unauthorizedEventSubject.send(.proceedToSignIn)
     }
     
     @MainActor

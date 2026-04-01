@@ -41,7 +41,7 @@ struct AppointmentsHeaderView: View {
 }
 
 #Preview {
-    let eventPub = PassthroughSubject<AppointmentEvent, Never>()
-    let viewModel = AppointmentsHeaderViewModel(appointmentEventPub: eventPub)
+    let eventSubject = PassthroughSubject<AppointmentEvent, Never>()
+    let viewModel = AppointmentsHeaderViewModel(appointmentEventSubject: eventSubject)
     return AppointmentsHeaderView(viewModel: viewModel)
 }

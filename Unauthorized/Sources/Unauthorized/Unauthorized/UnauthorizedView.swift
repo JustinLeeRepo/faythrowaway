@@ -93,7 +93,7 @@ extension View {
 }
 
 #Preview {
-    let eventPublisher = PassthroughSubject<UnauthorizedEvent, Never>()
-    let viewModel = UnauthorizedViewModel(dependencyContainer: MockDependencyContainer(), unauthorizedEventPublisher: eventPublisher)
+    let eventSubject = PassthroughSubject<UnauthorizedEvent, Never>()
+    let viewModel = UnauthorizedViewModel(dependencyContainer: MockDependencyContainer(), unauthorizedEventSubject: eventSubject)
     UnauthorizedView(viewModel: viewModel)
 }

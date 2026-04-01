@@ -24,8 +24,8 @@ final class AppointmentListViewModelTests: XCTestCase {
         
         let vm = AppointmentListViewModel(
             dependencyContainer: container,
-            appointmentTabEventPublisher: PassthroughSubject(),
-            eventPublisher: PassthroughSubject()
+            appointmentTabEventPublisher: PassthroughSubject().eraseToAnyPublisher(),
+            eventSubject: PassthroughSubject()
         )
         
         await vm.fetchAppointments()
@@ -43,8 +43,8 @@ final class AppointmentListViewModelTests: XCTestCase {
         
         let vm = AppointmentListViewModel(
             dependencyContainer: container,
-            appointmentTabEventPublisher: PassthroughSubject(),
-            eventPublisher: PassthroughSubject()
+            appointmentTabEventPublisher: PassthroughSubject().eraseToAnyPublisher(),
+            eventSubject: PassthroughSubject()
         )
         
         await vm.fetchAppointments()
@@ -61,8 +61,8 @@ final class AppointmentListViewModelTests: XCTestCase {
         
         let vm = AppointmentListViewModel(
             dependencyContainer: container,
-            appointmentTabEventPublisher: PassthroughSubject(),
-            eventPublisher: PassthroughSubject()
+            appointmentTabEventPublisher: PassthroughSubject().eraseToAnyPublisher(),
+            eventSubject: PassthroughSubject()
         )
         
         await vm.fetchAppointments()
@@ -75,8 +75,8 @@ final class AppointmentListViewModelTests: XCTestCase {
         
         let vm = AppointmentListViewModel(
             dependencyContainer: MockDependencyContainer(),
-            appointmentTabEventPublisher: subject,
-            eventPublisher: PassthroughSubject()
+            appointmentTabEventPublisher: subject.eraseToAnyPublisher(),
+            eventSubject: PassthroughSubject()
         )
         
         let expectation = XCTestExpectation(description: "Tab updated")
@@ -104,8 +104,8 @@ final class AppointmentListViewModelTests: XCTestCase {
         
         let vm = AppointmentListViewModel(
             dependencyContainer: container,
-            appointmentTabEventPublisher: subject,
-            eventPublisher: PassthroughSubject()
+            appointmentTabEventPublisher: subject.eraseToAnyPublisher(),
+            eventSubject: PassthroughSubject()
         )
         await vm.fetchAppointments()
         

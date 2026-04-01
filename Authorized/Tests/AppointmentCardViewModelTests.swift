@@ -26,7 +26,7 @@ final class AppointmentCardViewModelTests: XCTestCase {
         let vm = AppointmentCardViewModel(
             appointment: appointment,
             dateFormatter: formatter,
-            appointmentEventPub: subject
+            appointmentEventSubject: subject
         )
         
         XCTAssertFalse(vm.monthAbbreviation.isEmpty)
@@ -40,7 +40,7 @@ final class AppointmentCardViewModelTests: XCTestCase {
         let vm = AppointmentCardViewModel(
             appointment: appointment,
             dateFormatter: formatter,
-            appointmentEventPub: subject
+            appointmentEventSubject: subject
         )
         
         XCTAssertGreaterThan(vm.dateDay, 0)
@@ -56,7 +56,7 @@ final class AppointmentCardViewModelTests: XCTestCase {
             appointment: appointment,
             dateFormatter: formatter,
             isNextUpcoming: true,
-            appointmentEventPub: subject
+            appointmentEventSubject: subject
         )
         
         XCTAssertTrue(vm.timeTitle.contains("-"))
@@ -72,7 +72,7 @@ final class AppointmentCardViewModelTests: XCTestCase {
         let vm = AppointmentCardViewModel(
             appointment: appointment,
             dateFormatter: formatter,
-            appointmentEventPub: subject
+            appointmentEventSubject: subject
         )
         
         XCTAssertFalse(vm.timeTitle.contains("-"))
@@ -88,7 +88,7 @@ final class AppointmentCardViewModelTests: XCTestCase {
         let vm = AppointmentCardViewModel(
             appointment: appointment,
             dateFormatter: formatter,
-            appointmentEventPub: subject
+            appointmentEventSubject: subject
         )
         
         XCTAssertEqual(appointment.appointmentType.rawValue, vm.typeTitle)
@@ -105,7 +105,7 @@ final class AppointmentCardViewModelTests: XCTestCase {
             appointment: appointment,
             dateFormatter: formatter,
             isNextUpcoming: true,
-            appointmentEventPub: subject
+            appointmentEventSubject: subject
         )
         
         XCTAssertTrue(vm.typeTitle.contains(appointment.providerName))
@@ -119,7 +119,7 @@ final class AppointmentCardViewModelTests: XCTestCase {
         let vm = AppointmentCardViewModel(
             appointment: .mockUpcoming,
             dateFormatter: DateFormatter(),
-            appointmentEventPub: subject
+            appointmentEventSubject: subject
         )
         
         subject.sink { event in

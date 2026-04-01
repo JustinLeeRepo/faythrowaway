@@ -32,8 +32,8 @@ class AppointmentListViewModel: ObservableObject {
     
     let dateFormatter: DateFormatter
     
-    private let appointmentEventPub: PassthroughSubject<AppointmentEvent, Never>
-    private let appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>
+    private let appointmentEventSubject: PassthroughSubject<AppointmentEvent, Never>
+    private let appointmentTabEventPublisher: AnyPublisher<AppointmentTabEvent, Never>
     private var cancellables = Set<AnyCancellable>()
     private let appointmentService: AppointmentServicable
     
@@ -55,14 +55,14 @@ class AppointmentListViewModel: ObservableObject {
     }
     
     init(dependencyContainer: DependencyContainable,
-        appointmentTabEventPublisher: PassthroughSubject<AppointmentTabEvent, Never>,
-        eventPublisher: PassthroughSubject<AppointmentEvent, Never>) {
+        appointmentTabEventPublisher: AnyPublisher<AppointmentTabEvent, Never>,
+        eventSubject: PassthroughSubject<AppointmentEvent, Never>) {
         
         self.dateFormatter = DateFormatter()
         self.dateFormatter.timeZone = .current
         
         self.appointmentTabEventPublisher = appointmentTabEventPublisher
-        self.appointmentEventPub = eventPublisher
+        self.appointmentEventSubject = eventSubject
         
         self.appointmentService = dependencyContainer.getAppointmentService()
         setupListener()
@@ -72,7 +72,7 @@ class AppointmentListViewModel: ObservableObject {
         AppointmentCardViewModel(appointment: appointment,
                                  dateFormatter: dateFormatter,
                                  isNextUpcoming: isFirst && appointment.isUpcoming,
-                                 appointmentEventPub: appointmentEventPub)
+                                 appointmentEventSubject: appointmentEventSubject)
     }
     
     @MainActor

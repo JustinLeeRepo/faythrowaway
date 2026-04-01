@@ -96,6 +96,6 @@ struct AppointmentCardView: View {
     
     let eventPub = PassthroughSubject<AppointmentEvent, Never>()
     
-    let viewModel = AppointmentCardViewModel(appointment: appointment, dateFormatter: timeFormatter, appointmentEventPub: eventPub)
+    let viewModel = AppointmentCardViewModel(appointment: appointment, dateFormatter: timeFormatter, appointmentEventSubject: eventPub)
     return AppointmentCardView(viewModel: viewModel)
 }

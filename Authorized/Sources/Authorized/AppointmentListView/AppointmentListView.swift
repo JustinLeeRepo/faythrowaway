@@ -65,13 +65,13 @@ struct AppointmentListView: View {
 
 #Preview {
     
-    let appointmentTabEventPublisher = PassthroughSubject<AppointmentTabEvent, Never>()
-    let eventPublisher = PassthroughSubject<AppointmentEvent, Never>()
+    let appointmentTabEventPublisher = PassthroughSubject<AppointmentTabEvent, Never>().eraseToAnyPublisher()
+    let eventSubject = PassthroughSubject<AppointmentEvent, Never>()
     
     let viewModel = AppointmentListViewModel(
         dependencyContainer: MockDependencyContainer(),
         appointmentTabEventPublisher: appointmentTabEventPublisher,
-        eventPublisher: eventPublisher)
+        eventSubject: eventSubject)
     
     return AppointmentListView(viewModel: viewModel)
 }
