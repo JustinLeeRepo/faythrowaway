@@ -8,9 +8,15 @@
 import DependencyContainer
 import SwiftUI
 
+enum Field: Hashable {
+    case username
+    case password
+}
+
 struct SignInView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: SignInViewModel
+    @FocusState private var focusedField: Field?
     
     var body: some View {
         VStack {
@@ -20,6 +26,7 @@ struct SignInView: View {
             Button {
                 Task {
                     await viewModel.proceed {
+                        focusedField = nil
                         dismiss()
                     }
                 }
@@ -42,6 +49,9 @@ struct SignInView: View {
                     .opacity(viewModel.error == nil ? 0 : 1)
             }
         }
+        .onAppear {
+            focusedField = .username
+        }
         .onDisappear {
             viewModel.clearUsername()
         }
@@ -53,6 +63,10 @@ struct SignInView: View {
     private var fields: some View {
         TextField("Username", text: $viewModel.usernameText)
             .inputStyling()
+            .focused($focusedField, equals: .username)
+            .onSubmit {
+                focusedField = .password
+            }
             .autocorrectionDisabled()
             .overlay(alignment: .trailing) {
                 HStack {
@@ -70,6 +84,15 @@ struct SignInView: View {
         
         SecureField("Password", text: $viewModel.passwordText)
             .inputStyling()
+            .focused($focusedField, equals: .password)
+            .onSubmit {
+                Task {
+                    await viewModel.proceed {
+                        focusedField = nil
+                        dismiss()
+                    }
+                }
+            }
             .overlay(alignment: .trailing) {
                 HStack {
                     Spacer()
