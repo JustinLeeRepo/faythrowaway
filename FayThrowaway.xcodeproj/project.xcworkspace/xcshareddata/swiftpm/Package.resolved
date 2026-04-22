@@ -1,13 +1,12 @@
 {
-  "originHash" : "b744c75f78262bc048117ec9d8abc1edba8b03b64ed5673cb8bdb06a61232083",
   "pins" : [
     {
       "identity" : "lottie-spm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-spm.git",
       "state" : {
-        "revision" : "04f2fd18cc9404a0a0917265a449002674f24ec9",
-        "version" : "4.5.2"
+        "revision" : "69faaefa7721fba9e434a52c16adf4329c9084db",
+        "version" : "4.6.0"
       }
     },
     {
@@ -16,7 +15,7 @@
       "location" : "https://github.com/JustinLeeRepo/MilaKeychain/",
       "state" : {
         "branch" : "main",
-        "revision" : "d6d2e4ffb1c42255f34ead587db66eecce591613"
+        "revision" : "b12f96acf68767e397c4f1711560cac93b221fc2"
       }
     },
     {
@@ -25,9 +24,9 @@
       "location" : "https://github.com/JustinLeeRepo/MilaNetwork",
       "state" : {
         "branch" : "main",
-        "revision" : "83cad353809dde70897a567c62793d84702ff393"
+        "revision" : "5aaff4fba2df4c24215f1bbbf2e712bee772fb88"
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
